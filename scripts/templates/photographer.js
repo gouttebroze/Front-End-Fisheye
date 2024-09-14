@@ -1,7 +1,9 @@
 function photographerTemplate(data) {
-    const { name, portrait, id, tagline, title, image } = data;
+    const { name, portrait, id, tagline, title, image, photographerId } = data;
 
     const picture = `assets/photographers/${portrait}`;
+
+    // renommer car soit photo soit vidéo
     const photo = `assets/FishEye_Photos/Sample-Photos/${name}/${image}`;
 
     function getUserCardDOM() {
@@ -28,7 +30,6 @@ function photographerTemplate(data) {
         const article = document.createElement( 'article' );
         const headerTitle = document.createElement( 'h1' );
         const headerText = document.createElement( 'p' );
-        const contactBtn = document.createElement( 'button' );
         const img = document.createElement( 'img' );
 
         headerTitle.textContent = name;
@@ -51,14 +52,14 @@ function photographerTemplate(data) {
      */
     function getUserMediaDOM() {
         const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
+        //const img = document.createElement( 'img' );
         const titleMedia = document.createElement( 'p' );     
         const link = document.createElement( 'a' );
 
-        img.setAttribute("src", photo);
+        //img.setAttribute("src", photo);
         titleMedia.textContent = title;
 
-        article.appendChild(img);
+        //article.appendChild(img);
         article.appendChild(title);
 
         return (article);
