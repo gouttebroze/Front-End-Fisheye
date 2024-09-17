@@ -11,7 +11,7 @@ function photographerTemplate(data) {
         const img = document.createElement( 'img' );
         const link = document.createElement( 'a' );
         link.href = '/Front-End-Fisheye/photographer.html?id=' + id;
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         article.appendChild(img);
@@ -65,5 +65,5 @@ function photographerTemplate(data) {
         return (article);
     }
     
-    return { name, picture, photo, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM }
+    return { name, picture, photo, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM, id, photographerId }
 }
