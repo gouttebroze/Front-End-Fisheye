@@ -10,7 +10,7 @@ async function getPhotographers() {
 }
 
 /**
- * fetch media datas by photographer id
+ * fetch media datas
  */
 async function getMedias() {
   const response = await fetch('./data/photographers.json')
@@ -20,52 +20,45 @@ async function getMedias() {
   return data.media;   
 }
 
-async function displayData(photographers, media) {
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const Id = parseInt(urlParams.get('id'));
 
-  const parsedUrl = new URL(window.location.href);
-  console.log(parsedUrl.searchParams.get("id")); // return id from current url
-  const id = parsedUrl.searchParams.get("id");
-
+async function displayPhotographerData(photographers) {
+  
   const photographerHeaderSection = document.querySelector(".photograph-header");
-
-  photographers.forEach((photographer) => {
-    console.log(photographer.id)
+  
+  photographers
+    .filter(photographer => photographer.id === Id)
+    .forEach((photographer) => {
     const photographerModel = photographerTemplate(photographer);
     const userHeaderDOM = photographerModel.getUserHeaderDOM();
     photographerHeaderSection.appendChild(userHeaderDOM);
   })
-  
-  
-  //const mediaSection = document.querySelector('#main');
+}
 
-  // ou créer une div + classe pr les medias ?
-  //const mediaBlockElement = document.createElement( 'div' );
-  //mediaBlockElement.classList.add('media_section');
+async function displayMediaData(medias) {
+  const mediaSection = document.querySelector('.photograph-header');
 
-  // vise la div précédement créé
-  //const mediaSection = document.querySelector('.media_section');
-  
-  /* media
-  .map((m) =>{ 
-    console.log(m.photographerId);   
-    const mediaModel = photographerTemplate(m);
-    const userMediaCardDOM = mediaModel.getUserMediaDOM(m);
+  medias
+    .filter(media => media.photographerId === Id) // filtre les medias ayant le photographerId = à l'id de l'url
+    .forEach((media) => { 
+    console.log(media.photographerId);   
+    const mediaModel = photographerTemplate(media);
+    const userMediaCardDOM = mediaModel.getUserMediaDOM();
     mediaSection.appendChild(userMediaCardDOM);
-    console.log(m);   
-  }); */
+    console.log(media);   
+  });
 }
 
 async function init() {
-  const parsedUrl = new URL(window.location.href);
-  console.log(parsedUrl.searchParams.get("id")); // return id from current url
-  const id = parsedUrl.searchParams.get("id");
   
   const photographers = await getPhotographers();
-  //const media = await getMedias();
-  displayData(photographers);
-  //displayData(media);
+  const media = await getMedias();
+  displayPhotographerData(photographers);
+  displayMediaData(media);
   console.log(photographers);
-  //console.log(media);
+  console.log(media);
 }
 
 init();

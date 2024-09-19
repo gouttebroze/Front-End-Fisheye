@@ -6,6 +6,66 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+
+}
+
+.photograph-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.photograph-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.photograph-header img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.photograph-text h1 {
+    color: rgba(211, 87, 60, 1);
+    font-size: 64px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.photograph-text .photographer-localisation {
+    color: rgba(144, 28, 28, 1);
+    font-size: 24px;
+}
+
+.photograph-text p {
+    font-size: 18px;
+}
+
+/* propriété à poser ds 1 selecteur parent*/
+/* .cards-media-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 10px;
+} */
+
+.media-text {
+    color: rgba(144, 28, 28, 1);
+}
+
+.media-text h3 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.likes p {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.likes .likes-icon {
+    width: 17.5px;
+    height: 18.35px;
+    border-radius: 0%;
 }
 
 .contact_button {
