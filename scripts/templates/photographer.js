@@ -1,10 +1,8 @@
 function photographerTemplate(data) {
-    const { name, portrait, id, tagline, title, image, photographerId, country, city, likes } = data;
+    const { name, portrait, id, tagline, title, image, photographerId, country, city, likes, video } = data;
 
     const picture = `assets/photographers/${portrait}`;
-    // media = photo & video // id ou photographerId
-    const media = `assets/FishEye_Photos/medias/${id}/${image}`;
-    const likesIcon = `assets/icons/heart.svg`;
+    const media = `assets/FishEye_Photos/medias/${photographerId}/${image || video}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -71,12 +69,18 @@ function photographerTemplate(data) {
      * @returns 
      */
     function getUserMediaDOM() {
+
         const $cardsMediaWrapper = document.createElement( 'article' );
         $cardsMediaWrapper.classList.add('cards-media-wrapper');
 
+        const imageElement = `<img src="${media}" alt="${title}" width="200px" height="200px" />`;
+        const videoElement = `<video controls width="250">
+                                <source src="${media}" type="video/mp4" />
+                              </video>`;
+
         const photographerMedia = `
-            <div class="media-card>
-                <img src="${media}" alt="${title}" />
+            <div class="media-card">
+                ${image ? imageElement : videoElement}
                 <div class="media-text">
                     <h3>${title}</h3>
                     <div class="likes">
