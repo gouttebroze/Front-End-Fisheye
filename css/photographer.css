@@ -145,6 +145,14 @@ form textarea {
     height: 98px;
 }
 
-.no-scroll {
-    overflow: hidden;
+.lighbox {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
 }

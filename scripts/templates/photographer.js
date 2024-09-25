@@ -61,6 +61,12 @@ function photographerTemplate(data) {
         return ($wrapper);
     }
 
+
+    const imageElement = `<img src="${media}" alt="${title}" width="200px" height="200px" />`;
+    const videoElement = `<video controls width="250">
+                            <source src="${media}" type="video/mp4" />
+                          </video>`;
+
     /**
      * fn that represent media list from array (json datas)
      * a link ('a' HTML tag), that open the lightbox, 
@@ -70,13 +76,8 @@ function photographerTemplate(data) {
      */
     function getUserMediaDOM() {
 
-        const $cardsMediaWrapper = document.createElement( 'article' );
+        const $cardsMediaWrapper = document.createElement( 'li' );
         $cardsMediaWrapper.classList.add('cards-media-wrapper');
-
-        const imageElement = `<img src="${media}" alt="${title}" width="200px" height="200px" />`;
-        const videoElement = `<video controls width="250">
-                                <source src="${media}" type="video/mp4" />
-                              </video>`;
 
         const photographerMedia = `
             <div class="media-card">
@@ -93,11 +94,29 @@ function photographerTemplate(data) {
                     </div>
                 </div>
             </div>
+            
         `;
         $cardsMediaWrapper.innerHTML = photographerMedia;
 
         return ($cardsMediaWrapper);
     }
+
+    function getUserLightboxDOM() {
+
+        const $lightboxMediaWrapper = document.querySelector('#open_lightbox');
+        
+        const lightboxMedia = `
+            <div class="lightbox">       
+                <button class="goToNextSlide"></button>
+                ${image ? imageElement : videoElement}
+                <button class="goToLastSlide"></button>
+                <img class="close_button" src="assets/icons/close.svg" onclick="closeLightBox()" />
+            </div>
+        `;
+        $lightboxMediaWrapper.innerHTML = lightboxMedia;
+
+        return ($lightboxMediaWrapper);
+    }
     
-    return { name, picture, media, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM, id, photographerId }
+    return { name, picture, media, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM, getUserLightboxDOM, id, photographerId }
 }

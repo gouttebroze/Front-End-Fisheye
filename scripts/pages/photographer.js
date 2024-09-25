@@ -38,7 +38,38 @@ async function displayMediaData(medias) {
       const mediaModel = photographerTemplate(media);
       const userMediaCardDOM = mediaModel.getUserMediaDOM();
       mediaSection.appendChild(userMediaCardDOM);
+      console.log(media);
   });
+}
+
+async function displayLightboxData(medias) {
+  const lightboxSection = document.querySelector('.lightbox');
+  const $lightbox = document.querySelector('#open_lightbox');
+  const $closeLightbox = document.querySelector('.close_button');
+
+  $lightbox.style.display = "block";
+  $main.style.display = "none";
+
+  medias
+    .filter(media => media.photographerId === Id) // filtre les medias ayant le photographerId = à l'id de l'url
+    .forEach((media) => { 
+      const lightboxModel = photographerTemplate(media);
+      const userLightboxDOM = lightboxModel.getUserLightboxDOM();
+      lightboxSection.appendChild(userLightboxDOM);
+    })
+}
+
+
+// const $main = document.querySelector('#main');
+// const $body = document.querySelector('body');
+
+function displayLightBox() {
+    
+}
+
+function closeLightBox() {
+    $lightbox.style.display = "none";
+    $main.style.display = "block";
 }
 
 async function init() {
@@ -47,8 +78,10 @@ async function init() {
   const media = await getMedias();
   displayPhotographerData(photographers);
   displayMediaData(media);
-  // console.log(photographers);
-  // console.log(media);
+
+  document.
+  // displayLightboxData(media);
+  // closeLightBox();
 }
 
 init();

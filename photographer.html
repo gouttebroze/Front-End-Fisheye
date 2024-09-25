@@ -17,13 +17,21 @@
     <div class="photograph-header">
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
-    <div class="photograph-medias"></div>
+    <ul class="photograph-medias">
+    </ul>
   </main>
+  <div id="open_lightbox">
+    <!-- <div class="lightbox">
+      <button class="goToNextSlide"></button>
+      <button class="goToLastSlide"></button>
+      <img class="close_button" src="assets/icons/close.svg" onclick="closeLightBox()" />
+    </div> -->
+  </div>
   <div id="contact_modal">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img class="close_button" src="assets/icons/close.svg" onclick="closeModal()" />
       </header>
       <form>
         <div>
@@ -36,7 +44,7 @@
           <label for="message">Votre message</label>
           <textarea name="message" id="message"></textarea>
         </div>
-        <button type="submit" class="contact_button" onclick="closeModal()">
+        <button type="submit" class="contact_button" id="send_button" onclick="closeModal()">
           Envoyer
         </button>
       </form>
