@@ -62,8 +62,8 @@ function photographerTemplate(data) {
     }
 
 
-    const imageElement = `<img src="${media}" alt="${title}" width="200px" height="200px" />`;
-    const videoElement = `<video controls width="250">
+    const imageElement = `<img class="go-to-lightbox" src="${media}" alt="${title}" width="200px" height="200px" />`;
+    const videoElement = `<video class="go-to-lightbox" controls width="250">
                             <source src="${media}" type="video/mp4" />
                           </video>`;
 
@@ -106,11 +106,14 @@ function photographerTemplate(data) {
         const $lightboxMediaWrapper = document.querySelector('#open_lightbox');
         
         const lightboxMedia = `
-            <div class="lightbox">       
-                <button class="goToNextSlide"></button>
-                ${image ? imageElement : videoElement}
-                <button class="goToLastSlide"></button>
-                <img class="close_button" src="assets/icons/close.svg" onclick="closeLightBox()" />
+            <div class="lightbox">
+                <h3>${title}</h3>
+                <div class="lightbox-media">
+                    <img id="next-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
+                    ${image ? imageElement : videoElement}
+                    <img id="previous-slide" src="assets/icons/ArrowRight.svg" alt="Next" />  
+                </div>
+                <img src="assets/icons/CloseColor.svg" alt="Close" class="close_button" onclick="closeLightBox()" />
             </div>
         `;
         $lightboxMediaWrapper.innerHTML = lightboxMedia;

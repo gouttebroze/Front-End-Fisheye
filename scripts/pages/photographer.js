@@ -1,16 +1,8 @@
-async function getPhotographers() {
-  const response = await fetch('./data/photographers.json')
-  const data = await response.json()
-  // console.log(data); 
-  return data.photographers;   
-}
+const lightboxSection = document.querySelector('.lightbox');
+const $lightbox = document.querySelector('#open_lightbox');
+const $closeLightbox = document.querySelector('.close_button');
 
-async function getMedias() {
-  const response = await fetch('./data/photographers.json')
-  const data = await response.json()
-  // console.log(data.media); 
-  return data.media;   
-}
+let currentIndex = 0;
 
 // fetch photographer id from current URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -39,47 +31,85 @@ async function displayMediaData(medias) {
       const userMediaCardDOM = mediaModel.getUserMediaDOM();
       mediaSection.appendChild(userMediaCardDOM);
       console.log(media);
+      console.log(media.image);
+      
   });
+  
 }
 
-async function displayLightboxData(medias) {
-  const lightboxSection = document.querySelector('.lightbox');
-  const $lightbox = document.querySelector('#open_lightbox');
-  const $closeLightbox = document.querySelector('.close_button');
-
+/* async function displayLightboxData(medias) {
+  
   $lightbox.style.display = "block";
   $main.style.display = "none";
 
   medias
     .filter(media => media.photographerId === Id) // filtre les medias ayant le photographerId = à l'id de l'url
-    .forEach((media) => { 
+    .map((media) => { 
       const lightboxModel = photographerTemplate(media);
       const userLightboxDOM = lightboxModel.getUserLightboxDOM();
-      lightboxSection.appendChild(userLightboxDOM);
+      lightboxSection.appendChild(userLightboxDOM);     
     })
+  console.log(medias);
+} */
+
+/* function goToNextSlide() {
+
+  state.index++;
+
+  if (state.index) {}
+
 }
 
+function goToPreviousSlide() {
 
-// const $main = document.querySelector('#main');
-// const $body = document.querySelector('body');
+}
 
 function displayLightBox() {
-    
+  $lightbox.style.display = "block";
+  $main.style.display = "none";
 }
 
 function closeLightBox() {
     $lightbox.style.display = "none";
     $main.style.display = "block";
-}
+} */
+
+/* function mediaEventListeners(medias) {
+  medias
+    .filter(media => media.photographerId === Id).map((media, index) => {
+    document
+    .querySelector('.go-to-lightbox')
+    .addEventListener('click', () => {
+      displayLightboxData(media[index])
+    });
+  })
+} */
 
 async function init() {
   
   const photographers = await getPhotographers();
   const media = await getMedias();
+
   displayPhotographerData(photographers);
   displayMediaData(media);
 
-  document.
+  const mediasSelection = document.querySelectorAll('.cards-media-wrapper');
+  mediasSelection.forEach((li, index) => {
+    li.addEventListener('click', () => {
+      // currentIndex = index;
+      displayLightboxData(media);
+      console.log(media);
+      
+    });
+  })
+     
+  document
+    .querySelector('#next-slide')
+    .addEventListener('click', goToNextSlide);
+  document
+    .querySelector('#previous-slide')
+    .addEventListener('click', goToPreviousSlide);
+
   // displayLightboxData(media);
   // closeLightBox();
 }
