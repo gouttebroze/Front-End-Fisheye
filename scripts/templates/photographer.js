@@ -109,17 +109,29 @@ function photographerTemplate(data) {
             <div class="lightbox">
                 <h3>${title}</h3>
                 <div class="lightbox-media">
-                    <img id="next-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
+                    <img id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
                     ${image ? imageElement : videoElement}
-                    <img id="previous-slide" src="assets/icons/ArrowRight.svg" alt="Next" />  
-                </div>
+                    <img id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />  
+                </div> 
                 <img src="assets/icons/CloseColor.svg" alt="Close" class="close_button" onclick="closeLightBox()" />
             </div>
         `;
         $lightboxMediaWrapper.innerHTML = lightboxMedia;
 
+  document
+    .querySelector('#next-slide')
+    .addEventListener('click', () => {
+        goToNextSlide(data)
+    });
+
+  document
+    .querySelector('#previous-slide')
+    .addEventListener('click', goToPreviousSlide);
+
+  
+
         return ($lightboxMediaWrapper);
     }
     
-    return { name, picture, media, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM, getUserLightboxDOM, id, photographerId }
+    return { imageElement, videoElement, name, picture, media, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM, getUserLightboxDOM, id, photographerId }
 }

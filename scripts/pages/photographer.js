@@ -2,8 +2,6 @@ const lightboxSection = document.querySelector('.lightbox');
 const $lightbox = document.querySelector('#open_lightbox');
 const $closeLightbox = document.querySelector('.close_button');
 
-let currentIndex = 0;
-
 // fetch photographer id from current URL
 const urlParams = new URLSearchParams(window.location.search);
 const Id = parseInt(urlParams.get('id'));
@@ -32,7 +30,7 @@ async function displayMediaData(medias) {
       mediaSection.appendChild(userMediaCardDOM);
       console.log(media);
       console.log(media.image);
-      
+      console.log(Array.isArray(medias));
   });
   
 }
@@ -88,27 +86,21 @@ function closeLightBox() {
 async function init() {
   
   const photographers = await getPhotographers();
-  const media = await getMedias();
+  const medias = await getMedias();
 
   displayPhotographerData(photographers);
-  displayMediaData(media);
+  displayMediaData(medias);
 
   const mediasSelection = document.querySelectorAll('.cards-media-wrapper');
   mediasSelection.forEach((li, index) => {
     li.addEventListener('click', () => {
-      // currentIndex = index;
-      displayLightboxData(media);
-      console.log(media);
+      displayLightboxData(medias.filter(media => media.photographerId === Id), index);
+      console.log(medias);
       
     });
   })
      
-  document
-    .querySelector('#next-slide')
-    .addEventListener('click', goToNextSlide);
-  document
-    .querySelector('#previous-slide')
-    .addEventListener('click', goToPreviousSlide);
+
 
   // displayLightboxData(media);
   // closeLightBox();

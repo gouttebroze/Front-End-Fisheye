@@ -15,7 +15,7 @@ function displayModal() {
     const $modal = document.getElementById("contact_modal");
     
 	$modal.style.display = "block";
-    $main.style.display = "none"; // mettre 1 propriété filter à la place du display="none"
+    $main.style.display = "none"; 
     $body.setAttribute('aria-hidden', 'true');
     $modal.setAttribute('aria-hidden', 'false');
     $modal.setAttribute('aria-describedby', 'Contact me');
