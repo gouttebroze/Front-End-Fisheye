@@ -1,4 +1,7 @@
-function photographerTemplate(data) {
+// import { goToNextSlide, closeLightBox } from "../utils/lightbox.js";
+// import { modalSubmit } from "../utils/contactForm.js";
+
+export function photographerTemplate(data) {
     const { name, portrait, id, tagline, title, image, photographerId, country, city, likes, video } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -97,6 +100,8 @@ function photographerTemplate(data) {
             
         `;
         $cardsMediaWrapper.innerHTML = photographerMedia;
+
+        // modalSubmit();
 
         return ($cardsMediaWrapper);
     }

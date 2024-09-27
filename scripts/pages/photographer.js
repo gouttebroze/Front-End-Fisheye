@@ -1,10 +1,14 @@
-const lightboxSection = document.querySelector('.lightbox');
-const $lightbox = document.querySelector('#open_lightbox');
-const $closeLightbox = document.querySelector('.close_button');
+import { getPhotographers, getMedias } from "../utils/fetch.js";
+import { photographerTemplate } from "../templates/photographer.js";
+// import { displayLightboxData } from "../utils/lightbox.js";
+
+export const lightboxSection = document.querySelector('.lightbox');
+export const $lightbox = document.querySelector('#open_lightbox');
+export const $closeLightbox = document.querySelector('.close_button');
 
 // fetch photographer id from current URL
-const urlParams = new URLSearchParams(window.location.search);
-const Id = parseInt(urlParams.get('id'));
+export const urlParams = new URLSearchParams(window.location.search);
+export const Id = parseInt(urlParams.get('id'));
 
 async function displayPhotographerData(photographers) {
   

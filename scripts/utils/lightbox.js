@@ -1,3 +1,8 @@
+// import { getMedias } from "./fetch.js";
+// import { photographerTemplate } from "../templates/photographer.js";
+// import { $lightbox, Id } from "../pages/photographer.js";
+// import { $main } from "./contactForm.js";
+
 // const urlParams = new URLSearchParams(window.location.search);
 // const Id = parseInt(urlParams.get('id'));
 
@@ -18,9 +23,10 @@ async function goToNextSlide(currentMedia) {
   const nextMediaElement = nextMedia.image ? mediaModel.imageElement : mediaModel.videoElement;
   const mediaElement = document.querySelector('#previous-slide').nextSibling;
 
-const tempDiv = document.createElement('div');
-tempDiv.innerHTML = nextMediaElement;
-const element = tempDiv.firstChild;
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = nextMediaElement;
+  const element = tempDiv.firstChild;
+
   mediaElement.replaceWith(element);
   console.log(element, mediaElement);
   
@@ -37,9 +43,6 @@ async function displayLightboxData(medias, index) {
   console.log(medias);
   console.log(Array.isArray(medias));
 }
-
-
-
   
 function closeLightBox() {
     $lightbox.style.display = "none";
