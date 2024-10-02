@@ -48,6 +48,11 @@ async function displayMediaData(medias) {
       lightboxSection.appendChild(userLightboxDOM);     
     })
   console.log(medias);
+}
+
+function closeLightBox() {
+    $lightbox.style.display = "none";
+    $main.style.display = "block";
 } */
 
 /* function goToNextSlide() {
@@ -62,15 +67,9 @@ function goToPreviousSlide() {
 
 }
 
-function displayLightBox() {
-  $lightbox.style.display = "block";
-  $main.style.display = "none";
-}
 
-function closeLightBox() {
-    $lightbox.style.display = "none";
-    $main.style.display = "block";
-} */
+
+
 
 /* function mediaEventListeners(medias) {
   medias
@@ -83,6 +82,15 @@ function closeLightBox() {
   })
 } */
 
+
+
+/*********************************************** */
+/*********************************************** */
+/************ --- Test lightbox --- ************ */
+/*********************************************** */
+/*********************************************** */
+
+
 async function init() {
   
   const photographers = await getPhotographers();
@@ -90,6 +98,8 @@ async function init() {
 
   displayPhotographerData(photographers);
   displayMediaData(medias);
+
+  
 
   const mediasSelection = document.querySelectorAll('.cards-media-wrapper');
   mediasSelection.forEach((li, index) => {
@@ -99,11 +109,10 @@ async function init() {
       
     });
   })
-     
+
+  // attendre le chargement du DOM
 
 
-  // displayLightboxData(media);
-  // closeLightBox();
 }
 
 init();

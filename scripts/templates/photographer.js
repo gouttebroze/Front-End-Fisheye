@@ -97,15 +97,28 @@ function photographerTemplate(data) {
             
         `;
         $cardsMediaWrapper.innerHTML = photographerMedia;
+        
 
         return ($cardsMediaWrapper);
     }
+
+/*     function newGetUserLightboxDOM() {
+
+        document.addEventListener('DOMContentLoaded', function () { // attention aux changements de ref. du "this" (utiliser bind() ou fn flécher)
+            new Slider(document.querySelector('#open_lightbox'), {
+                slidesToScroll: 1,  // indique le nbre d'élement au scroll
+                slidesVisible: 1  // indique le nbre d'élément visible
+            });
+        })
+
+        
+    } */
 
     function getUserLightboxDOM() {
 
         const $lightboxMediaWrapper = document.querySelector('#open_lightbox');
         
-        const lightboxMedia = `
+        /* const lightboxMedia = `
             <div class="lightbox">
                 <h3>${title}</h3>
                 <div class="lightbox-media">
@@ -115,9 +128,29 @@ function photographerTemplate(data) {
                 </div> 
                 <img src="assets/icons/CloseColor.svg" alt="Close" class="close_button" onclick="closeLightBox()" />
             </div>
-        `;
-        $lightboxMediaWrapper.innerHTML = lightboxMedia;
+        `; */
+        //$lightboxMediaWrapper.innerHTML = lightboxMedia;
 
+        const imageEl = `<img class="lightbox-media image" src="${media}" alt="${title}" />`;
+        const videoEl = `<video class="lightbox-media video" controls>
+                                <source src="${media}" type="video/mp4" />
+                              </video>`;
+
+        const lightboxContainer = `
+            <figure id="slider" class="lightbox-media slider">
+                <img id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
+                ${image ? imageEl : videoEl}
+                <img id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />  
+                <img src="assets/icons/CloseColor.svg" alt="Close" class="close_button" onclick="closeLightBox()" />
+                <figcaption>
+                    <h3 class="media-title">${title}</h3>
+                </figcaption>
+            </figure>
+        `;
+        $lightboxMediaWrapper.innerHTML = lightboxContainer;
+
+    
+    
   document
     .querySelector('#next-slide')
     .addEventListener('click', () => {
@@ -128,10 +161,22 @@ function photographerTemplate(data) {
     .querySelector('#previous-slide')
     .addEventListener('click', goToPreviousSlide);
 
-  
 
         return ($lightboxMediaWrapper);
     }
     
-    return { imageElement, videoElement, name, picture, media, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM, getUserLightboxDOM, id, photographerId }
+    return { 
+        imageElement, 
+        videoElement, 
+        title, 
+        name, 
+        picture, 
+        media, 
+        getUserCardDOM, 
+        getUserHeaderDOM, 
+        getUserMediaDOM, 
+        getUserLightboxDOM,
+        id, 
+        photographerId
+    }
 }

@@ -9,18 +9,22 @@ async function getPhotographerMedias() {
 }
 
 async function goToNextSlide(currentMedia) {
-  const medias = await getPhotographerMedias() 
-  const currentMediaIndex = medias.findIndex(media => media.id === currentMedia.id)
+  const medias = await getPhotographerMedias();
+  const currentMediaIndex = medias.findIndex(media => media.id === currentMedia.id);
+
   console.log(currentMediaIndex);
   console.log(medias);
-  const nextMedia = medias[currentMediaIndex +1]
-  const mediaModel = photographerTemplate(nextMedia)
-  const nextMediaElement = nextMedia.image ? mediaModel.imageElement : mediaModel.videoElement;
+
+  const nextMedia = medias[currentMediaIndex + 1];
+  const mediaModel = photographerTemplate(nextMedia);
+  let nextMediaElement = nextMedia.image ? mediaModel.imageElement : mediaModel.videoElement;
+  // nextMediaElement += mediaModel.title;
   const mediaElement = document.querySelector('#previous-slide').nextSibling;
 
-const tempDiv = document.createElement('div');
-tempDiv.innerHTML = nextMediaElement;
-const element = tempDiv.firstChild;
+  const tempDiv = document.createElement( 'div' );
+  tempDiv.innerHTML = nextMediaElement;
+  const element = tempDiv.firstChild;
+
   mediaElement.replaceWith(element);
   console.log(element, mediaElement);
   
@@ -38,9 +42,6 @@ async function displayLightboxData(medias, index) {
   console.log(Array.isArray(medias));
 }
 
-
-
-  
 function closeLightBox() {
     $lightbox.style.display = "none";
     $main.style.display = "block";

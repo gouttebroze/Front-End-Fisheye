@@ -162,9 +162,22 @@ form textarea {
     display: flex;
     flex-direction: row;
     gap: 20px;
+
+    overflow: hidden;
 }
 
 .lightbox-media>.go-to-lightbox {
     width: 80%;
     height: 900px;
 }
+
+/* .hide {
+    display: none;
+} */
+
+/* .slider {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    text-align: center;
+    transform: rotate(-3deg);
+} */
