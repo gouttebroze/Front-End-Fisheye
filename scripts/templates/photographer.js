@@ -1,4 +1,4 @@
-// import { goToNextSlide, closeLightBox } from "../utils/lightbox.js";
+import { goToNextSlide, closeLightBox } from "../utils/lightbox.js";
 // import { modalSubmit } from "../utils/contactForm.js";
 
 export function photographerTemplate(data) {

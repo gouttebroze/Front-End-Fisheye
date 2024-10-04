@@ -1,6 +1,6 @@
 import { getPhotographers, getMedias } from "../utils/fetch.js";
 import { photographerTemplate } from "../templates/photographer.js";
-// import { displayLightboxData } from "../utils/lightbox.js";
+import { displayLightboxData } from "../utils/lightbox.js";
 
 export const lightboxSection = document.querySelector('.lightbox');
 export const $lightbox = document.querySelector('#open_lightbox');

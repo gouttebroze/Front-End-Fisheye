@@ -1,19 +1,19 @@
-// import { getMedias } from "./fetch.js";
-// import { photographerTemplate } from "../templates/photographer.js";
-// import { $lightbox, Id } from "../pages/photographer.js";
+import { getMedias } from "./fetch.js";
+import { photographerTemplate } from "../templates/photographer.js";
+import { $lightbox, Id } from "../pages/photographer.js";
 // import { $main } from "./contactForm.js";
 
 // const urlParams = new URLSearchParams(window.location.search);
 // const Id = parseInt(urlParams.get('id'));
 
-async function getPhotographerMedias() {
+export async function getPhotographerMedias() {
   const medias = await getMedias();
 
   return medias
     .filter(media => media.photographerId === Id) // filtre les medias ayant le photographerId = à l'id de l'url
 }
 
-async function goToNextSlide(currentMedia) {
+export async function goToNextSlide(currentMedia) {
   const medias = await getPhotographerMedias() 
   const currentMediaIndex = medias.findIndex(media => media.id === currentMedia.id)
   console.log(currentMediaIndex);
@@ -22,6 +22,8 @@ async function goToNextSlide(currentMedia) {
   const mediaModel = photographerTemplate(nextMedia)
   const nextMediaElement = nextMedia.image ? mediaModel.imageElement : mediaModel.videoElement;
   const mediaElement = document.querySelector('#previous-slide').nextSibling;
+
+  
 
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = nextMediaElement;
@@ -32,7 +34,7 @@ async function goToNextSlide(currentMedia) {
   
 }
 
-async function displayLightboxData(medias, index) {
+export async function displayLightboxData(medias, index) {
   
   $lightbox.style.display = "block";
   $main.style.display = "none";
@@ -44,7 +46,7 @@ async function displayLightboxData(medias, index) {
   console.log(Array.isArray(medias));
 }
   
-function closeLightBox() {
+export function closeLightBox() {
     $lightbox.style.display = "none";
     $main.style.display = "block";
 }
