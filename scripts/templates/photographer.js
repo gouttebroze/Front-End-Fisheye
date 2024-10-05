@@ -1,7 +1,4 @@
-import { goToNextSlide, closeLightBox } from "../utils/lightbox.js";
-// import { modalSubmit } from "../utils/contactForm.js";
-
-export function photographerTemplate(data) {
+function photographerTemplate(data) {
     const { name, portrait, id, tagline, title, image, photographerId, country, city, likes, video } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -64,7 +61,7 @@ export function photographerTemplate(data) {
         return ($wrapper);
     }
 
-
+    const $lightboxMediaWrapper = document.querySelector('#open_lightbox');
     const imageElement = `<img class="go-to-lightbox" src="${media}" alt="${title}" width="200px" height="200px" />`;
     const videoElement = `<video class="go-to-lightbox" controls width="250">
                             <source src="${media}" type="video/mp4" />
@@ -108,35 +105,101 @@ export function photographerTemplate(data) {
 
     function getUserLightboxDOM() {
 
-        const $lightboxMediaWrapper = document.querySelector('#open_lightbox');
+        const $arrows = document.querySelectorAll('.arrow');
+        //const $slide = document.querySelectorAll('.slide');
+        const $lightboxWrapper = document.querySelector('.lightbox');
+        const $title = document.querySelector('.lightbox-title');
+        const $media = document.querySelector('.media');
+
+        const $lightboxContainer = document.createElement( 'div' );
+        //$lightboxContainer.appendChild($lightboxWrapper);
+        $lightboxContainer.classList.add('lightbox-container'); 
+
+        /* const $lightboxMedia = document.createElement( 'div' );
+        const $lightboxMediaImage = document.createElement( 'img' );
+        // const $lightboxMediaVideo = document.createElement( 'video' );
+        $lightboxMedia.classList.add('lightbox-media');
+        $lightboxMediaImage.setAttribute('src', media);
+        $lightboxMediaImage.setAttribute('class', 'lightbox-media');
+        $lightboxMedia.appendChild($lightboxMediaImage);
+
+        const $lightboxTitle = document.createElement( 'h3' );
+        $lightboxTitle.classList.add('lightbox-title');
+        $lightboxTitle.textContent = title;
+
         
-        const lightboxMedia = `
-            <div class="lightbox">
-                <h3>${title}</h3>
+        $lightboxContainer.appendChild($lightboxTitle);
+        //$lightboxMediaWrapper.appendChild($lightboxContainer) */
+        
+
+/*         const lightboxMedia = `
+            <div class="lightbox">           
                 <div class="lightbox-media">
-                    <img id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
-                    ${image ? imageElement : videoElement}
-                    <img id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />  
-                </div> 
-                <img src="assets/icons/CloseColor.svg" alt="Close" class="close_button" onclick="closeLightBox()" />
+                    
+                    <img class="arrow prev lightbox__prev" id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
+                    <div>
+                        <h3 class="lightbox-title">${title}</h3>
+                    </div>
+                    <div class="media lightbox__container">
+                        ${image ? imageElement : videoElement}
+                    </div>               
+                    <img class="arrow next lightbox__next" id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />
+                    <img class="close_lightbox" src="assets/icons/CloseColor.svg" alt="" />
+                </div>
             </div>
         `;
-        $lightboxMediaWrapper.innerHTML = lightboxMedia;
 
-  document
-    .querySelector('#next-slide')
-    .addEventListener('click', () => {
-        goToNextSlide(data)
-    });
+        $lightboxContainer.innerHTML = lightboxMedia; */
 
-  document
-    .querySelector('#previous-slide')
-    .addEventListener('click', goToPreviousSlide);
+        console.log(media); // media.src
+        console.log(title);
+        
 
-  
+        $arrows.forEach((btn, i) => {
+            btn.addEventListener('click', (e) => {
 
-        return ($lightboxMediaWrapper);
+            })
+        })
+        
+        const arrows = document.querySelectorAll('.arrow');
+        const titleSet = document.querySelectorAll('.title-list');
+
+        let state;
+        arrows.forEach((arrow, index) => {
+            arrow.addEventListener('click', (e) => {
+                goToNextSlide(data);
+                goToPreviousSlide(data)
+                
+            })
+        })
+
+        state = {};
+
+          document.querySelector('.close_lightbox').addEventListener('click', closeLightBox);
+
+        /* document
+            .querySelector('#next-slide')
+            .addEventListener('click', (e) => {
+        });
+
+        document
+            .querySelector('#previous-slide')
+            .addEventListener('click', goToPreviousSlide); */
+            
+        return ($lightboxContainer);
     }
     
-    return { imageElement, videoElement, name, picture, media, getUserCardDOM, getUserHeaderDOM, getUserMediaDOM, getUserLightboxDOM, id, photographerId }
+    return { 
+        imageElement, 
+        videoElement, 
+        name, 
+        picture, 
+        media, 
+        getUserCardDOM, 
+        getUserHeaderDOM, 
+        getUserMediaDOM, 
+        getUserLightboxDOM, 
+        id, 
+        photographerId
+    }
 }

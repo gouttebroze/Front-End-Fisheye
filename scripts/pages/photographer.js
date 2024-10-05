@@ -1,14 +1,10 @@
-import { getPhotographers, getMedias } from "../utils/fetch.js";
-import { photographerTemplate } from "../templates/photographer.js";
-import { displayLightboxData } from "../utils/lightbox.js";
-
-export const lightboxSection = document.querySelector('.lightbox');
-export const $lightbox = document.querySelector('#open_lightbox');
-export const $closeLightbox = document.querySelector('.close_button');
+const lightboxSection = document.querySelector('.lightbox');
+const $lightbox = document.querySelector('#open_lightbox');
+const $closeLightbox = document.querySelector('.close_button');
 
 // fetch photographer id from current URL
-export const urlParams = new URLSearchParams(window.location.search);
-export const Id = parseInt(urlParams.get('id'));
+const urlParams = new URLSearchParams(window.location.search);
+const Id = parseInt(urlParams.get('id'));
 
 async function displayPhotographerData(photographers) {
   
@@ -94,20 +90,18 @@ async function init() {
 
   displayPhotographerData(photographers);
   displayMediaData(medias);
+  Lightbox.init();
 
-  const mediasSelection = document.querySelectorAll('.cards-media-wrapper');
+  /* const mediasSelection = document.querySelectorAll('.cards-media-wrapper');
   mediasSelection.forEach((li, index) => {
     li.addEventListener('click', () => {
       displayLightboxData(medias.filter(media => media.photographerId === Id), index);
       console.log(medias);
       
     });
-  })
-     
+  }) */
+          
 
-
-  // displayLightboxData(media);
-  // closeLightBox();
 }
 
 init();

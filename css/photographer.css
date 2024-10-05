@@ -156,6 +156,7 @@ form textarea {
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    /* opacity: 0; */
 }
 
 .lightbox-media {
@@ -164,7 +165,25 @@ form textarea {
     gap: 20px;
 }
 
-.lightbox-media>.go-to-lightbox {
+.media>img {
     width: 80%;
     height: 900px;
+}
+
+.hide {
+    display: none;
+}
+
+.disabled {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.active {
+    opacity: 1;
+}
+
+.open {
+    display: block;
 }

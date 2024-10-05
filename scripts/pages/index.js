@@ -1,6 +1,3 @@
-import { getPhotographers, getMedias } from "../utils/fetch.js";
-import { photographerTemplate } from "../templates/photographer.js";
-
 async function displayData(photographers) {
     console.log(photographers)
     const photographersSection = document.querySelector(".photographer_section");
