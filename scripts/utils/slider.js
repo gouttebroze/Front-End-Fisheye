@@ -1,16 +1,16 @@
 class Lightbox {
 
   static init() {
-		const gallerySection = document.querySelector(".photograph-medias");
-		const links = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"], source[src$=".mp4"]'));
-		const gallery = links.map((link) => link.getAttribute("src"));
-		links.forEach((link) => {
-			link.addEventListener("click", (e) => {
-				e.preventDefault();
-				new Lightbox(e.currentTarget.getAttribute("src"), gallery);
-			});
-		});
-	}
+    const gallerySection = document.querySelector(".photograph-medias");
+    const links = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"], source[src$=".mp4"]'));
+    const gallery = links.map((link) => link.getAttribute("src"));
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        new Lightbox(e.currentTarget.getAttribute("src"), gallery);
+      });
+    });
+  }
   /**
    * @param {string} url URL de l'img
    * @param {string[]} images chemins des images de la lightbox
@@ -29,30 +29,58 @@ class Lightbox {
   }
 
   loadImage(url, alt) {
-    this.url = null;
-    this.alt = alt;
-    const image = new Image();
-    const container = this.element.querySelector('.lightbox__container')
-    const title = document.createElement('h3');
-    title.innerHTML += this.getFormatedTitle(url);
-    // on vide le container de l'img actuel avant de charger la nouvelle image
-    container.innerHTML = '';
-    image.onload = () => {
+    console.log(url)
+    const isImage = url.includes('.jpg');
+    if (isImage) {
+      this.url = null;
+      this.alt = alt;
+      const image = new Image();
+      const container = this.element.querySelector('.lightbox__container')
+      const title = document.createElement('h3');
+      title.innerHTML += this.getFormatedTitle(url);
+      // on vide le container de l'img actuel avant de charger la nouvelle image
+      container.innerHTML = '';
+      image.onload = () => {
+        console.log('chargé');
+        container.appendChild(image);
+        container.appendChild(title);
+        this.url = url;
+      }
+      image.src = url;
+      image.alt = this.getFormatedTitle(url);
+    } else {
+      this.url = null;
+      this.alt = alt;
+      const video = document.createElement('video');
+      video.controls = true;
+      video.width = 250;
+
+
+      const container = this.element.querySelector('.lightbox__container')
+      const title = document.createElement('h3');
+      title.innerHTML += this.getFormatedTitle(url);
+      // on vide le container de l'img actuel avant de charger la nouvelle image
+      container.innerHTML = '';
+
       console.log('chargé');
-      container.appendChild(image);
-      container.appendChild(title);
+
       this.url = url;
+
+      video.src = url;
+      video.alt = this.getFormatedTitle(url);
+      container.appendChild(video);
+      container.appendChild(title);
     }
-    image.src = url;
-    image.alt = this.getFormatedTitle(url);
   }
 
+
+
   getFormatedTitle(path) {
-		const splitedPath = path.split("/");
-		const string = splitedPath[splitedPath.length - 1].split(".")[0];
-		const formatedTitle = string.replaceAll("_", " ");
-		return formatedTitle;
-	}
+    const splitedPath = path.split("/");
+    const string = splitedPath[splitedPath.length - 1].split(".")[0];
+    const formatedTitle = string.replaceAll("_", " ");
+    return formatedTitle;
+  }
 
   /**
    * @param {MouseEvent|KeyboardEvent} e 
@@ -111,7 +139,7 @@ class Lightbox {
    * @returns {HTMLElement}
    */
   buildDOM(url) { // permet de travailler sur 1 el. HTML
-    const $dom = document.createElement( 'div' );
+    const $dom = document.createElement('div');
     $dom.classList.add('lightbox');
     $dom.innerHTML = `
       <div class="lightbox">          
