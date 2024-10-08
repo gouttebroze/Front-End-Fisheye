@@ -22,20 +22,9 @@ async function displayPhotographerData(photographers) {
 async function displayMediaData(medias) {
   const $mediaSection = document.querySelector('.photograph-medias');
 
-  const likesSub = new LikesSubject();
-  const likesCount = new LikesCounter();
-  likesSub.subscribe(likesCount);
-
   medias
     .filter(media => media.photographerId === Id) // filtre les medias ayant le photographerId = à l'id de l'url
     .forEach((media) => {
-      /* const mediaModel = photographerTemplate(media, likesSub);
-      const userMediaCardDOM = mediaModel.getUserMediaDOM();
-      mediaSection.appendChild(userMediaCardDOM);
-      console.log(media);
-      console.log(media.image);
-      console.log(Array.isArray(medias)); */
-
       const Template = new MediaTemplate(media);
       $mediaSection.appendChild(Template.createMediaCard())
     });
@@ -50,17 +39,6 @@ async function init() {
   displayPhotographerData(photographers);
   displayMediaData(medias);
   Lightbox.init();
-
-  /* const mediasSelection = document.querySelectorAll('.cards-media-wrapper');
-  mediasSelection.forEach((li, index) => {
-    li.addEventListener('click', () => {
-      displayLightboxData(medias.filter(media => media.photographerId === Id), index);
-      console.log(medias);
-      
-    });
-  }) */
-
-
 }
 
 init();

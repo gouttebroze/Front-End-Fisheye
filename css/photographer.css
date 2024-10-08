@@ -50,7 +50,7 @@
     margin: 187px 100px 0 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px 10px;
+    gap: 20px 80px;
 }
 
 .media-text {
@@ -161,9 +161,15 @@ form textarea {
     height: 98px;
 }
 
+.go-to-lightbox {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.3));
+}
+
 #open_lightbox {
     border-radius: 5px;
-    background-color: rgba(124, 122, 129, 0.203);
+    background-color: rgba(201, 198, 210, 0.103);
     width: 85%;
     display: flex;
     flex-direction: raw;
@@ -171,7 +177,7 @@ form textarea {
     justify-content: space-between;
     padding: 35px;
     margin: auto;
-    /* opacity: 0; */
+    /* filter: drop-shadow(10px 3px 15px rgba(0, 0, 0, 0.6)); */
 }
 
 .lightbox {
@@ -183,18 +189,19 @@ form textarea {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    /* filter: drop-shadow(10px 3px 15px rgba(0, 0, 0, 0.6)); */
 }
 
 .lightbox-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.1));
 }
 
 .lightbox-container>img {
-    width: 80%;
-    height: 900px;
-    object-position: 50% 50%;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.3));
 }
 
 .hide {
@@ -213,4 +220,21 @@ form textarea {
 
 .open {
     display: block;
+}
+
+.fa-solid.fa-heart {
+    transition: scale 1s;
+}
+
+.fa-solid.fa-heart:hover {
+    scale: 1.2 1.2;
+}
+
+.likes-count {
+    display: flex;
+}
+
+.likes>button {
+    border: none;
+    background-color: transparent;
 }

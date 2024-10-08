@@ -7,6 +7,7 @@ class Photographer {
     this._price = data.price;
     this._portrait = data.portrait;
     this._id = data.id;
+    //this._mediasGallery = [];
   }
 
   get name() {
@@ -32,4 +33,5 @@ class Photographer {
   get portrait() {
     return `FishEye_Photos/Sample Photos/Photographers ID Photos/${this._portrait}`;
   }
+
 }

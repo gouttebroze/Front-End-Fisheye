@@ -5,10 +5,6 @@ function photographerTemplate(data) {
   const media = `assets/FishEye_Photos/medias/${photographerId}/${image || video}`;
   const $mediaCardContainer = document.querySelector('.photograph-medias');
 
-  const likesSub = new LikesSubject();
-  const likesCount = new LikesCounter();
-  likesSub.subscribe(likesCount);
-
   function getUserCardDOM() {
     const article = document.createElement('article');
     const img = document.createElement('img');
@@ -105,12 +101,7 @@ function photographerTemplate(data) {
     const $cardsMediaWrapper = document.createElement('li');
     $cardsMediaWrapper.classList.add('cards-media-wrapper');
 
-    /* const $liked = document.querySelector('.likes-btn');
-    $liked.addEventListener('click', () => {
-      console.log('liked');
-    }) */
-
-    const photographerMedia = `
+    /* const photographerMedia = `
             <div class="media-card">
                 ${image ? imageElement : videoElement}
                 <div class="media-text">
@@ -131,7 +122,7 @@ function photographerTemplate(data) {
                 </div>
             </div>
             
-        `;
+        `; */
     $cardsMediaWrapper.innerHTML = photographerMedia;
     // handleLikeButton();
 

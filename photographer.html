@@ -3,10 +3,12 @@
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="./css/fontawesome.css">
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - photographe </title>
+  <script src="https://kit.fontawesome.com/9f2a7f56bc.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe</title>
 </head>
 
 <body>
@@ -15,6 +17,10 @@
   </header>
   <main id="main">
     <div class="photograph-header">
+      <button>
+        <i class="fa-solid fa-money-bill-wave fa-lg" aria-hidden="true"></i>
+        <span>Économique</span>
+      </button>
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
     <ul class="photograph-medias">
@@ -53,7 +59,6 @@
   <script src="./scripts/pages/photographer.js"></script>
   <script src="./scripts/templates/mediaCard.js"></script>
   <script src="./scripts/templates/photographerTemplate.js"></script>
-
   <script src="./scripts/utils/contactForm.js"></script>
 
 </body>

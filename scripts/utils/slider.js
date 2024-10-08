@@ -142,8 +142,8 @@ class Lightbox {
     const $dom = document.createElement('div');
     $dom.classList.add('lightbox-wrapper');
     $dom.innerHTML = `
+      <img class="close-lightbox" src="assets/icons/CloseColor.svg" alt="" />
       <div class="lightbox">
-        <img class="close-lightbox" src="assets/icons/CloseColor.svg" alt="" />          
         <img class="arrow prev-lightbox" id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
           <div class="lightbox-media">           
               <div>
@@ -152,8 +152,7 @@ class Lightbox {
               <div class="lightbox-container">
               </div>                            
           </div>
-          <img class="arrow next-lightbox" id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />
-          
+          <img class="arrow next-lightbox" id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />    
       </div>
     `;
     $dom
