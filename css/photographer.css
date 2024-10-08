@@ -73,6 +73,21 @@
     border-radius: 0%;
 }
 
+.likes-btn {
+    align-items: center;
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 8px;
+    bottom: 5px;
+    cursor: pointer;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    padding: 4px;
+    right: 55px;
+    width: 30px;
+}
+
+
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -146,17 +161,22 @@ form textarea {
     height: 98px;
 }
 
-.lightbox {
+#open_lightbox {
     border-radius: 5px;
     background-color: rgba(124, 122, 129, 0.203);
     width: 85%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: raw;
     align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
     /* opacity: 0; */
+}
+
+.lightbox {
+    display: flex;
+    flex-direction: row;
 }
 
 .lightbox-media {
@@ -165,9 +185,16 @@ form textarea {
     gap: 20px;
 }
 
-.media>img {
+.lightbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-container>img {
     width: 80%;
     height: 900px;
+    object-position: 50% 50%;
 }
 
 .hide {

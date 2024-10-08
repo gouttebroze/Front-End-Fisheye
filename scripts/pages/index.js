@@ -13,40 +13,42 @@ async function init() {
     // Récupère les datas des photographes
     const photographers = await getPhotographers();
     console.log(photographers);
-    
+
     displayData(photographers);
-} 
-    
+}
+
 init();
 
 
 /**************************************************************************************
  * 
  **********************************************************************************************/
-/* 
-class App {
+
+/* class App {
     constructor() {
-        this.photographersSection = document.querySelector(".photographer_section");
-        this.photographersApi = new PhotographerApi('./../data/photographers.json');
+        this.$photographersSection = document.querySelector(".photographer_section");
+        this.photographersApi = new PhotographerApi('./data/photographers.json');
     }
 
     async main() {
         console.log(this.photographersApi);
-        
-        const photographers = await this.photographersApi.getPhotographers();
-    
-        photographers
-            .map(photographer => {
-                new Photographer(photographer);
-                console.log(photographer);
-            })  
-            
-    }   
+        const photographersData = await this.photographersApi?.getPhotographers();
+        console.log(photographersData);
+
+        photographersData?.map(photographer => new Photographer(photographer))
+            .forEach(photographer => {
+                const Template = new PhotographerTemplate(photographer);
+                this.$photographersSection.appendChild(
+                    Template.createPhotographerCard()
+                );
+            });
+
+    }
 }
-    
+
 
 const app = new App();
-app.main();
- */
+app.main(); */
 
-    
+
+

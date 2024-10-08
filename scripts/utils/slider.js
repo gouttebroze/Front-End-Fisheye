@@ -35,9 +35,9 @@ class Lightbox {
       this.url = null;
       this.alt = alt;
       const image = new Image();
-      const container = this.element.querySelector('.lightbox__container')
+      const container = this.element.querySelector('.lightbox-container')
       const title = document.createElement('h3');
-      title.innerHTML += this.getFormatedTitle(url);
+      title.innerHTML += this.addTitle(url);
       // on vide le container de l'img actuel avant de charger la nouvelle image
       container.innerHTML = '';
       image.onload = () => {
@@ -47,7 +47,7 @@ class Lightbox {
         this.url = url;
       }
       image.src = url;
-      image.alt = this.getFormatedTitle(url);
+      image.alt = this.addTitle(url);
     } else {
       this.url = null;
       this.alt = alt;
@@ -58,7 +58,7 @@ class Lightbox {
 
       const container = this.element.querySelector('.lightbox__container')
       const title = document.createElement('h3');
-      title.innerHTML += this.getFormatedTitle(url);
+      title.innerHTML += this.addTitle(url);
       // on vide le container de l'img actuel avant de charger la nouvelle image
       container.innerHTML = '';
 
@@ -67,7 +67,7 @@ class Lightbox {
       this.url = url;
 
       video.src = url;
-      video.alt = this.getFormatedTitle(url);
+      video.alt = this.addTitle(url);
       container.appendChild(video);
       container.appendChild(title);
     }
@@ -75,11 +75,11 @@ class Lightbox {
 
 
 
-  getFormatedTitle(path) {
-    const splitedPath = path.split("/");
-    const string = splitedPath[splitedPath.length - 1].split(".")[0];
-    const formatedTitle = string.replaceAll("_", " ");
-    return formatedTitle;
+  addTitle(url) {
+    const splitedUrl = url.split("/");
+    const string = splitedUrl[splitedUrl.length - 1].split(".")[0];
+    const title = string.replaceAll("_", " ");
+    return title;
   }
 
   /**
@@ -140,19 +140,20 @@ class Lightbox {
    */
   buildDOM(url) { // permet de travailler sur 1 el. HTML
     const $dom = document.createElement('div');
-    $dom.classList.add('lightbox');
+    $dom.classList.add('lightbox-wrapper');
     $dom.innerHTML = `
-      <div class="lightbox">          
+      <div class="lightbox">
+        <img class="close-lightbox" src="assets/icons/CloseColor.svg" alt="" />          
         <img class="arrow prev-lightbox" id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
           <div class="lightbox-media">           
               <div>
                   <h3 class="lightbox-title"></h3>
               </div>
-              <div class="lightbox__container media">
+              <div class="lightbox-container">
               </div>                            
           </div>
           <img class="arrow next-lightbox" id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />
-          <img class="close-lightbox" src="assets/icons/CloseColor.svg" alt="" />
+          
       </div>
     `;
     $dom
