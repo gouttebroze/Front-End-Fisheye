@@ -3,11 +3,10 @@
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="./css/fontawesome.css">
+  <link rel="stylesheet" href="./css/all.css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/9f2a7f56bc.js" crossorigin="anonymous"></script>
   <title>Fisheye - photographe</title>
 </head>
 
@@ -17,12 +16,21 @@
   </header>
   <main id="main">
     <div class="photograph-header">
-      <button>
-        <i class="fa-solid fa-money-bill-wave fa-lg" aria-hidden="true"></i>
-        <span>Économique</span>
-      </button>
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
+    <nav>
+      <div class="dropdown custom-select" style="width:200px;">
+        <label for="sorting-listbox">Trier par</label>
+        <select class="dropdown--sr-only sr-only" id="sorting-listbox">
+          <option value="date">Date</option>
+          <option value="likes">Popularité</option>
+          <option value="title">Titre</option><select>
+            <option value="0">Select car:</option>
+            <option value="1">Audi</option>
+            <option value="2">BMW</option>
+          </select>
+      </div>
+    </nav>
     <ul class="photograph-medias">
     </ul>
   </main>
@@ -54,8 +62,6 @@
   </div>
   <script src="./scripts/utils/fetch.js"></script>
   <script src="./scripts/utils/slider.js"></script>
-  <script src="./scripts/likes/subject.js"></script>
-  <script src="./scripts/likes/counter.js"></script>
   <script src="./scripts/pages/photographer.js"></script>
   <script src="./scripts/templates/mediaCard.js"></script>
   <script src="./scripts/templates/photographerTemplate.js"></script>

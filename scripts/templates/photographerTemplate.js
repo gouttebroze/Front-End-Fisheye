@@ -55,7 +55,7 @@ function photographerTemplate(data) {
                 </div>
                 <p>${tagline}</p>
             </div>
-            <img src="${picture}" alt="${name}" />
+            <img class="portrait" src="${picture}" alt="${name}" />
         `;
     $wrapper.innerHTML = photographerHeader;
 
@@ -66,28 +66,6 @@ function photographerTemplate(data) {
   const videoElement = `<video class="go-to-lightbox" controls width="250">
                             <source src="${media}" type="video/mp4" />
                           </video>`;
-
-  function handleLikeButton() {
-    //const $likesCount = document.querySelectorAll('.likes-count');
-    //const $allLikes = document.querySelectorAll('');
-
-
-    /* $liked.addEventListener('click', () => {
-      if ($liked.classList.contains('liked')) {
-        $liked.classList.remove('liked');
-        likesSub.fire('DEC');
-      } else {
-        $liked.classList.add('liked');
-        likesSub.fire('INC');
-      }
-    }) */
-
-    /* document.querySelector('.likes-btn').addEventListener('click', function () {
-      if ($wrapper.classList.contains('likes')) {
-        $wrapper.classList.remove('.likes');
-      }
-    }) */
-  }
 
   /**
    * fn that represent media list from array (json datas)

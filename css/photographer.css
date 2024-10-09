@@ -1,11 +1,25 @@
+/****** General ***********/
+/* * {} */
+
+:root {
+    --main-color: #FAFAFA;
+    --btn-color: rgb(144, 28, 28);
+    --modat-color: #DB8876;
+    --title-text-color: rgba(211, 87, 60, 1);
+    --form-laber-color: #312E2E;
+}
+
+body {}
+
 #contact_modal {
     display: none;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
+    background-color: var(--main-color);
     height: 300px;
     margin: 0 100px;
+    max-width: 1240px;
 
 }
 
@@ -19,10 +33,13 @@
     flex-direction: column;
 }
 
-.photograph-header img {
+.photograph-header .portrait {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 .photograph-text h1 {
@@ -46,21 +63,7 @@
     
 } */
 
-.photograph-medias {
-    margin: 187px 100px 0 100px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px 80px;
-}
 
-.media-text {
-    color: rgba(144, 28, 28, 1);
-}
-
-.media-text h3 {
-    font-size: 24px;
-    font-weight: 400;
-}
 
 .likes p {
     font-size: 24px;
@@ -161,12 +164,6 @@ form textarea {
     height: 98px;
 }
 
-.go-to-lightbox {
-    max-width: 100%;
-    height: auto;
-    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.3));
-}
-
 #open_lightbox {
     border-radius: 5px;
     background-color: rgba(201, 198, 210, 0.103);
@@ -232,9 +229,207 @@ form textarea {
 
 .likes-count {
     display: flex;
+    align-items: center;
 }
 
-.likes>button {
-    border: none;
-    background-color: transparent;
+input[type="checkbox"] {
+    appearance: none;
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    transition: scale 1s;
+    color: #901C1C;
+    display: inline-block;
+    font-size: 17.5px;
+
+}
+
+input[type="checkbox"]::before {
+    content: "\f004";
+
+
+}
+
+.likes-count>input[type="checkbox"].like-input:hover {
+    scale: 1.2 1.2;
+}
+
+/****************************************/
+/********** Gallery / cards  ************/
+/****************************************/
+.photograph-medias {
+    margin: 30vh 8vw;
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 95px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.cards-media-wrapper {
+    border-radius: 0.3rem;
+
+}
+
+.cards-media-wrapper:hover {
+    cursor: pointer;
+}
+
+.media-card {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.go-to-lightbox {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.3));
+    overflow: hidden;
+}
+
+.media-text {
+    color: rgba(144, 28, 28, 1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.media-text h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/************************
+****** dropdown *********
+*************************/
+
+.dropdown {
+    display: flex;
+    margin: 6rem 0 2rem 0;
+    z-index: 100;
+}
+
+label {
+    font-weight: 700;
+}
+
+.dropdown-custom-wrapper {
+    position: absolute;
+}
+
+.dropdown-custom {
+    position: absolute;
+    top: -1rem;
+    left: 6rem;
+    z-index: 1000;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.dropdown__option {
+    display: none;
+    width: 11rem;
+    margin: 0;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+
+    /* .dropdown__option.focused,
+.dropdown__option:hover {
+    background: ;
+*/
+}
+
+.dropdown__option.displayed {
+    display: block;
+}
+
+.dropdown__option:not(.selected-criterion) {
+    padding-top: 0;
+}
+
+.dropdown__option::before {
+    display: inline-block;
+    position: relative;
+    top: -1rem;
+    left: -0.5rem;
+    width: 9rem;
+    content: "";
+}
+
+i {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    color: white;
+}
+
+/*************** exemple DROPDOWN ******************/
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+}
+
+.custom-select select {
+    display: none;
+    /*hide original SELECT element: */
+}
+
+.select-selected {
+    background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
 }

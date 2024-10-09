@@ -44,12 +44,8 @@ class PhotographerMedia {
     return this._price;
   }
 
-  /*   get mediaType() {
-      return this._mediaType.hasOwnProperty('.jpg') ? this._image : this._video;
+  /*   set likes(value) {
+      this._likes = value;
+      this._userLike = !this._userLike;
     } */
-
-  set likes(value) {
-    this._likes = value;
-    this._userLike = !this._userLike;
-  }
 }

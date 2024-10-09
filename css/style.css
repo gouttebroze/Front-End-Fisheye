@@ -23,16 +23,6 @@ ul li {
     list-style: none;
 }
 
-:root {
-    /* --main-color: #0065FC;
-    --main-bg-color: #F2F2F2;
-    --filter-bg-color: #DEEBFF; */
-}
-
-.fa-solid {
-    color: blue;
-}
-
 .logo {
     height: 50px;
     margin-left: 100px;

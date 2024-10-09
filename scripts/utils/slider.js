@@ -56,7 +56,7 @@ class Lightbox {
       video.width = 250;
 
 
-      const container = this.element.querySelector('.lightbox__container')
+      const container = this.element.querySelector('.lightbox-container')
       const title = document.createElement('h3');
       title.innerHTML += this.addTitle(url);
       // on vide le container de l'img actuel avant de charger la nouvelle image
@@ -101,9 +101,9 @@ class Lightbox {
   onKeyUp(e) {
     if (e.key == 'Escape') {
       this.close(e)
-    } else if (e.key == 'ArrowLeft') {
-      this.next(e)
     } else if (e.key == 'ArrowRight') {
+      this.next(e)
+    } else if (e.key == 'ArrowLeft') {
       this.prev(e)
     }
   }
@@ -142,8 +142,7 @@ class Lightbox {
     const $dom = document.createElement('div');
     $dom.classList.add('lightbox-wrapper');
     $dom.innerHTML = `
-      <img class="close-lightbox" src="assets/icons/CloseColor.svg" alt="" />
-      <div class="lightbox">
+      <div class="lightbox">          
         <img class="arrow prev-lightbox" id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
           <div class="lightbox-media">           
               <div>
@@ -152,7 +151,8 @@ class Lightbox {
               <div class="lightbox-container">
               </div>                            
           </div>
-          <img class="arrow next-lightbox" id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />    
+          <img class="arrow next-lightbox" id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />
+          <img class="close-lightbox" src="assets/icons/CloseColor.svg" alt="" />
       </div>
     `;
     $dom
