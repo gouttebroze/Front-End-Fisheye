@@ -1,5 +1,5 @@
 function photographerTemplate(data) {
-  const { name, portrait, id, tagline, title, image, photographerId, country, city, likes, video } = data;
+  const { name, portrait, id, tagline, title, image, photographerId, country, city, likes, price, video } = data;
 
   const picture = `assets/photographers/${portrait}`;
   const media = `assets/FishEye_Photos/medias/${photographerId}/${image || video}`;
@@ -60,6 +60,18 @@ function photographerTemplate(data) {
     $wrapper.innerHTML = photographerHeader;
 
     return ($wrapper);
+  }
+
+  function getUserFooterDOM() {
+    const $footerWrapper = document.createElement('article');
+    $footerWrapper.classList.add('.photographer-footer');
+
+    const $photographerFooter = `
+        <p>${likes}</p>
+        <p>${price}€ / jour</p>
+    `;
+    $footerWrapper.innerHTML = $photographerFooter;
+    return ($footerWrapper);
   }
 
   const imageElement = `<img class="go-to-lightbox" src="${media}" alt="${title}" width="200px" height="200px" />`;
@@ -197,6 +209,7 @@ function photographerTemplate(data) {
     getUserCardDOM,
     getUserHeaderDOM,
     getUserMediaDOM,
+    getUserFooterDOM,
     id,
     photographerId,
   }

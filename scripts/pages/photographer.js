@@ -9,19 +9,22 @@ const Id = parseInt(urlParams.get('id'));
 async function displayPhotographerData(photographers) {
 
   const photographerHeaderSection = document.querySelector(".photograph-header");
-
+  const photographerFooterSection = document.querySelector(".photographer-footer");
   photographers
     .filter(photographer => photographer.id === Id)
     .forEach((photographer) => {
+      /* const Template = new MediaTemplate(photographer) */
       const photographerModel = photographerTemplate(photographer);
       const userHeaderDOM = photographerModel.getUserHeaderDOM();
-      photographerHeaderSection.appendChild(userHeaderDOM);
+      /* const userFooterDOM = photographerModel.getUserFooterDOM();
+      photographerFooterSection.appendChild(userFooterDOM); */
+      /* photographerFooterSection.appendChild(Template.getUserFooterDOM());; */
+      photographerHeaderSection.appendChild(userHeaderDOM)
     })
 }
 
 async function displayMediaData(medias) {
   const $mediaSection = document.querySelector('.photograph-medias');
-
   medias
     .filter(media => media.photographerId === Id) // filtre les medias ayant le photographerId = à l'id de l'url
     .forEach((media) => {
@@ -31,6 +34,43 @@ async function displayMediaData(medias) {
 
 }
 
+function handleSortMedias(medias) {
+
+  const $select = document.querySelector('#sorting-listbox')
+  $select.addEventListener('change', () => {
+    const $mediaSection = document.querySelector('.photograph-medias');
+    $mediaSection.innerHTML = ''
+    debugger
+    console.log($select.value);
+    switch ($select.value) {
+      case "likes":
+        medias.sort((a, b) => b.likes - a.likes)
+        debugger
+        displayMediaData(medias)
+        break;
+
+      default:
+        break;
+    }
+  })
+}
+
+function displayPhotographerInfos(medias, photographers) {
+  const $photographerFooter = document.querySelector('.photographer-footer');
+  let totalLikes = 0;
+  medias.filter(media => media.photographerId === Id).forEach(media => {
+    totalLikes += media.likes;
+  })
+  const $likes = document.createElement('span')
+  $likes.setAttribute('id', 'totalLikes')
+  $likes.innerHTML = totalLikes
+  $photographerFooter.appendChild($likes)
+  const photographer = photographers.filter(photographer => photographer.id === Id)[0]
+  const $price = document.createElement('span')
+  $price.innerHTML = photographer.price
+  $photographerFooter.appendChild($price)
+}
+
 async function init() {
 
   const photographers = await getPhotographers();
@@ -38,6 +78,8 @@ async function init() {
 
   displayPhotographerData(photographers);
   displayMediaData(medias);
+  handleSortMedias(medias)
+  displayPhotographerInfos(medias, photographers)
   Lightbox.init();
 }
 

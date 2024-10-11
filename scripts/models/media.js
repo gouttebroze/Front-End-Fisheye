@@ -43,9 +43,10 @@ class PhotographerMedia {
   get price() {
     return this._price;
   }
+}
 
-  /*   set likes(value) {
-      this._likes = value;
-      this._userLike = !this._userLike;
-    } */
+class PhotographerGallery {
+  constructor(media) {
+    this.media = media;
+  }
 }

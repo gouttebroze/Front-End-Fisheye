@@ -1,20 +1,22 @@
 class MediaTemplate {
-  constructor(media) {
+  constructor(media, photographer) {
     this._media = media;
-    this._media.likes = media.likes;
     this.$mediaWrapper = document.createElement('li');
     this.$mediaWrapper.classList.add('cards-media-wrapper');
     this.multimedia = `assets/FishEye_Photos/medias/${this._media.photographerId}/${this._media.image || this._media.video}`;
-    this.totalLikes = 0;
-    this.totalLikes += this._media.likes;
-  }
-
-  get likes() {
-    return this._media.likes;
+    // this._photographer = photographer;
   }
 
   get media() {
     return this._media;
+  }
+
+  /*   get photographer() {
+      return this._photographer;
+    } */
+
+  get likes() {
+    return this._media.likes;
   }
 
   createMediaCard() {
@@ -29,15 +31,10 @@ class MediaTemplate {
                 <h3>${this._media.title}</h3>
                 
                 <div class="likes-count">
-                  <label 
-                    id="like-${this._media.id}" 
-                    for="like-${this._media.id}-input" 
-                    class="like-label">
+                  <label class="like-label">
                     ${this._media.likes}
                   </label>
                   <input 
-                    id="like-${this._media.id}-input" 
-                    aria-label="${this._media.likes} likes" 
                     class="like-input" 
                     type="checkbox" 
                   />
@@ -47,12 +44,14 @@ class MediaTemplate {
     `;
 
     this.$mediaWrapper.innerHTML = mediaCard;
-
     this.$mediaWrapper
-      .querySelector(`#like-${this._media.id}-input`)
+      .querySelector(`.like-input`)
       .checked = this._media.userLike;
 
     this.userLiked();
+
+    console.log(this._media.likes);
+    // console.log(this._photographer.price);
     return this.$mediaWrapper;
   }
 
@@ -60,14 +59,35 @@ class MediaTemplate {
     this.$mediaWrapper
       .querySelector('input[type="checkbox"]')
       .addEventListener('click', (e) => {
+        const $totalLikes = document.querySelector('#totalLikes')
+        let totalLikes = Number($totalLikes.innerHTML)
         if (e.target.checked) {
           this._media.likes += 1;
+          totalLikes += 1
         } else {
           this._media.likes -= 1;
+          totalLikes -= 1
         }
+        $totalLikes.innerHTML = totalLikes
         this.$mediaWrapper.querySelector('label.like-label').innerHTML = this._media.likes;
-        //this.$mediaWrapper.querySelector('input.like-input');
       })
   }
 
+  getUserFooterDOM() {
+    const $footerWrapper = document.createElement('article');
+    $footerWrapper.classList.add('.photographer-footer');
+
+    const $photographerFooter = `
+        <p>${this._media.likes}</p>
+        <p>${this._photographer.price}€ / jour</p>
+    `;
+    $footerWrapper.innerHTML = $photographerFooter;
+    return ($footerWrapper);
+  }
+
+  allMediasLikes() {
+    const $allMediasLIkes = Array.from(document.querySelectorAll('label.like-label'));
+    console.log($allMediasLIkes);
+
+  }
 }

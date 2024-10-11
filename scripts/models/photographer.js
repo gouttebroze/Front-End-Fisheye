@@ -1,5 +1,5 @@
 class Photographer {
-  constructor(data) {
+  constructor(data, likes) {
     this._name = data.name;
     this._city = data.city;
     this._country = data.country;
@@ -7,7 +7,7 @@ class Photographer {
     this._price = data.price;
     this._portrait = data.portrait;
     this._id = data.id;
-    //this._mediasGallery = [];
+    this._allMediasLikes = likes;
   }
 
   get name() {
@@ -33,5 +33,15 @@ class Photographer {
   get portrait() {
     return `FishEye_Photos/Sample Photos/Photographers ID Photos/${this._portrait}`;
   }
+
+  /*   get allMediasLikes() {
+      let $allMediasLIkes = document.querySelectorAll('.like-label');
+      let allLikesNumber = 0;
+      $allMediasLIkes.forEach((like) => {
+        let like = Number(like.textContent)
+        allLikesNumber += like
+      })
+      return allLikesNumber;
+    } */
 
 }

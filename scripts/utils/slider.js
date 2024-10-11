@@ -49,13 +49,16 @@ class Lightbox {
       image.src = url;
       image.alt = this.addTitle(url);
     } else {
+
+      /**
+       * créer 1 element source avec attribut src ds video
+       * (là on ne créé qu'1 élement video avec src sans element source)
+       */
       this.url = null;
       this.alt = alt;
       const video = document.createElement('video');
       video.controls = true;
       video.width = 250;
-
-
       const container = this.element.querySelector('.lightbox-container')
       const title = document.createElement('h3');
       title.innerHTML += this.addTitle(url);
