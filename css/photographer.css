@@ -4,12 +4,14 @@
 :root {
     --main-color: #FAFAFA;
     --btn-color: rgb(144, 28, 28);
-    --modat-color: #DB8876;
+    --btn-scd-color: #DB8876;
     --title-text-color: rgba(211, 87, 60, 1);
     --form-laber-color: #312E2E;
 }
 
-body {}
+body {
+    position: relative;
+}
 
 #contact_modal {
     display: none;
@@ -257,7 +259,7 @@ input[type="checkbox"]::before {
 /********** Gallery / cards  ************/
 /****************************************/
 .photograph-medias {
-    margin: 30vh 8vw;
+    margin: 20vh 8vw 0 8vw;
     display: grid;
     /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -363,12 +365,39 @@ label {
     content: "";
 }
 
-i {
+/* i {
     position: absolute;
     top: 1.25rem;
     right: 1.25rem;
     color: white;
+} */
+
+/**********************************
+    Photographer Footer
+***********************************/
+footer {
+    display: flex;
+    justify-content: flex-end;
 }
+
+.photographer-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--btn-scd-color);
+    font-size: 24px;
+    font-weight: 500;
+    position: sticky;
+    right: 0;
+    top: 20px;
+    width: 376px;
+    height: 89px;
+    border-radius: 5px;
+}
+
+#totalLikes {}
+
+.photographer-footer__price {}
 
 /*************** exemple DROPDOWN ******************/
 /* The container must be positioned relative: */

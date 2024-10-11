@@ -61,14 +61,23 @@ function displayPhotographerInfos(medias, photographers) {
   medias.filter(media => media.photographerId === Id).forEach(media => {
     totalLikes += media.likes;
   })
-  const $likes = document.createElement('span')
-  $likes.setAttribute('id', 'totalLikes')
-  $likes.innerHTML = totalLikes
-  $photographerFooter.appendChild($likes)
-  const photographer = photographers.filter(photographer => photographer.id === Id)[0]
-  const $price = document.createElement('span')
-  $price.innerHTML = photographer.price
-  $photographerFooter.appendChild($price)
+  const $likes = document.createElement('span');
+  $likes.setAttribute('id', 'totalLikes');
+  $likes.innerHTML = totalLikes;
+  // $photographerFooter.appendChild($likes);
+  const $heartIcon = document.createElement('span');
+  $heartIcon.innerHTML = '<i class="fa-solid fa-heart footer-icon" style="color: #000000;"></i>';
+  // $photographerFooter.appendChild($heartIcon);
+  const $likesContainer = document.createElement('span');
+  $likesContainer.classList.add('likes-footer-container');
+  $likesContainer.appendChild($likes);
+  $likesContainer.appendChild($heartIcon);
+  $photographerFooter.appendChild($likesContainer);
+  const photographer = photographers.filter(photographer => photographer.id === Id)[0];
+  const $price = document.createElement('span');
+  $price.classList.add('photographer-footer__price');
+  $price.innerHTML = `${photographer.price}€ / jour`;
+  $photographerFooter.appendChild($price);
 }
 
 async function init() {

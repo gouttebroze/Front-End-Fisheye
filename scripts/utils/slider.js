@@ -58,7 +58,7 @@ class Lightbox {
       this.alt = alt;
       const $video = document.createElement('video');
       $video.controls = true;
-      $video.width = 250;
+      $video.width = 480;
       const $source = document.createElement('source');
       $source.setAttribute('type', 'video/mp4');
       $video.appendChild($source);
