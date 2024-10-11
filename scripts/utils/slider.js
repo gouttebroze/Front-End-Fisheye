@@ -2,7 +2,7 @@ class Lightbox {
 
   static init() {
     const gallerySection = document.querySelector(".photograph-medias");
-    const links = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"], source[src$=".mp4"]'));
+    const links = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"], video[src$=".mp4"]'));
     const gallery = links.map((link) => link.getAttribute("src"));
     links.forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -56,22 +56,22 @@ class Lightbox {
        */
       this.url = null;
       this.alt = alt;
-      const video = document.createElement('video');
-      video.controls = true;
-      video.width = 250;
+      const $video = document.createElement('video');
+      $video.controls = true;
+      $video.width = 250;
+      const $source = document.createElement('source');
+      $source.setAttribute('type', 'video/mp4');
+      $video.appendChild($source);
       const container = this.element.querySelector('.lightbox-container')
       const title = document.createElement('h3');
       title.innerHTML += this.addTitle(url);
       // on vide le container de l'img actuel avant de charger la nouvelle image
       container.innerHTML = '';
-
       console.log('chargé');
-
       this.url = url;
-
-      video.src = url;
-      video.alt = this.addTitle(url);
-      container.appendChild(video);
+      $source.src = url;
+      $source.alt = this.addTitle(url);
+      container.appendChild($video);
       container.appendChild(title);
     }
   }

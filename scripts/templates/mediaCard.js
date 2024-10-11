@@ -21,9 +21,14 @@ class MediaTemplate {
 
   createMediaCard() {
     const imageElement = `<img class="go-to-lightbox" src="${this.multimedia}" alt="${this._media.title}" width="350px" height="300px" />`;
-    const videoElement = `<video class="go-to-lightbox" controls width="250">
+    /* const videoElement = `<video class="go-to-lightbox" controls width="250">
                             <source src="${this.multimedia}" type="video/mp4" />
-                          </video>`;
+                            <p>
+                              Votre navigateur ne prend pas en charge les vidéos HTML5. Voici
+                              <a href="myVideo.mp4">un lien pour télécharger la vidéo</a>.
+                            </p>
+                          </video>`; */
+    const videoElement = `<video src="${this.multimedia}" class="go-to-lightbox" controls width="250"></video>`;
     const mediaCard = `
         <div class="media-card">
             ${this._media.image ? imageElement : videoElement}
