@@ -20,6 +20,12 @@ class MediaTemplate {
   }
 
   createMediaCard() {
+
+    /* template to test sort feature by date: */
+    /*  <br />
+        <h2>${this._media.date}</h2> 
+    */
+
     const imageElement = `<img class="go-to-lightbox" src="${this.multimedia}" alt="${this._media.title}" width="350px" height="300px" />`;
     /* const videoElement = `<video class="go-to-lightbox" controls width="250">
                             <source src="${this.multimedia}" type="video/mp4" />
@@ -34,8 +40,6 @@ class MediaTemplate {
             ${this._media.image ? imageElement : videoElement}
             <div class="media-text">
                 <h3>${this._media.title}</h3>
-                <br />
-                <h2>${this._media.date}</h2>
                 <div class="likes-count">
                   <label class="like-label">
                     ${this._media.likes}

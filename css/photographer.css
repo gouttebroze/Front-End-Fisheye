@@ -13,6 +13,10 @@ body {
     position: relative;
 }
 
+#main {
+    position: relative;
+}
+
 #contact_modal {
     display: none;
 }
@@ -47,6 +51,7 @@ body {
  */
     overflow: hidden;
     object-fit: cover;
+    transform: scale(1.1);
 }
 
 .photograph-text h1 {
@@ -64,13 +69,6 @@ body {
 .photograph-text p {
     font-size: 18px;
 }
-
-/* propriété à poser ds 1 selecteur parent*/
-/* .cards-media-wrapper {
-    
-} */
-
-
 
 .likes p {
     font-size: 24px;
@@ -97,7 +95,9 @@ body {
     width: 30px;
 }
 
-
+/****************************************
+************    MODAL style *************
+*****************************************/
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -184,6 +184,7 @@ form textarea {
     /* filter: drop-shadow(10px 3px 15px rgba(0, 0, 0, 0.6)); */
 }
 
+/************ LIGHTBOX style ***********************/
 .lightbox {
     display: flex;
     flex-direction: row;
@@ -270,11 +271,14 @@ input[type="checkbox"]::before {
     gap: 20px 95px;
     padding: 0;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .cards-media-wrapper {
     border-radius: 0.3rem;
-
+    position: relative;
+    z-index: 1;
 }
 
 .cards-media-wrapper:hover {
@@ -286,6 +290,8 @@ input[type="checkbox"]::before {
     height: auto;
     object-fit: cover;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .go-to-lightbox {
@@ -294,6 +300,8 @@ input[type="checkbox"]::before {
     object-fit: cover;
     filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.3));
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .media-text {
@@ -310,78 +318,27 @@ input[type="checkbox"]::before {
     padding-bottom: 10px;
 }
 
-/************************
-****** dropdown *********
-*************************/
-
-.dropdown {
-    display: flex;
-    margin: 6rem 0 2rem 0;
-    z-index: 100;
-}
-
-label {
-    font-weight: 700;
-}
-
-.dropdown-custom-wrapper {
-    position: absolute;
-}
-
-.dropdown-custom {
-    position: absolute;
-    top: -1rem;
-    left: 6rem;
-    z-index: 1000;
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-
-.dropdown__option {
-    display: none;
-    width: 11rem;
-    margin: 0;
-    padding: 1rem 1.5rem;
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
-
-    /* .dropdown__option.focused,
-.dropdown__option:hover {
-    background: ;
-*/
-}
-
-.dropdown__option.displayed {
-    display: block;
-}
-
-.dropdown__option:not(.selected-criterion) {
-    padding-top: 0;
-}
-
-.dropdown__option::before {
-    display: inline-block;
-    position: relative;
-    top: -1rem;
-    left: -0.5rem;
-    width: 9rem;
-    content: "";
-}
-
-/* i {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    color: white;
-} */
 
 /**********************************
     Photographer Footer
 ***********************************/
 footer {
+    /* 
+    background-color: var(--btn-scd-color);
+    font-size: 24px;
+    border-radius: 5px; */
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    left: 100%;
+    margin-right: 36px;
+    width: 20rem;
+    background: #db8876;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    z-index: 1000;
 }
 
 .photographer-footer {
@@ -390,29 +347,28 @@ footer {
     align-items: center;
     background-color: var(--btn-scd-color);
     font-size: 24px;
-    /*     font-weight: 500; */
-    position: sticky;
     right: 0;
-    top: 20px;
+    top: 200px;
     width: 376px;
-    height: 89px;
+    height: 66px;
     border-radius: 5px;
 }
 
-#totalLikes {}
+/* #totalLikes { clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");}*/
+/* .photographer-footer__price {}  */
 
-.photographer-footer__price {}
 
-/*************** exemple DROPDOWN ******************/
-/* The container must be positioned relative: */
+/************************
+****** dropdown *********
+*************************/
 .custom-select {
     position: relative;
-    font-family: Arial;
+    margin-left: 100px;
 }
 
 
 .select-selected {
-    background-color: DodgerBlue;
+    background-color: var(--btn-color);
 }
 
 /* Style the arrow inside the select element: */
@@ -446,7 +402,7 @@ footer {
 /* Style items (options): */
 .select-items {
     position: absolute;
-    background-color: DodgerBlue;
+    background-color: var(--btn-color);
     top: 100%;
     left: 0;
     right: 0;
@@ -454,9 +410,9 @@ footer {
 }
 
 /* Hide the items when the select box is closed: */
-.select-hide {
+/* .select-hide {
     display: none;
-}
+} */
 
 .select-items div:hover,
 .same-as-selected {
@@ -465,4 +421,39 @@ footer {
 
 @media (max-width: 1024px) {}
 
-@media (max-width: 767.98px) {}
+@media (max-width: 767.98px) {
+    .photograph-medias {
+        margin: 20vh 8vw 0 8vw;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 95px;
+        padding: 0;
+    }
+
+    .photograph-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .photograph-text {
+        align-items: center;
+    }
+
+    .photograph-text h1 {
+        color: rgba(211, 87, 60, 1);
+        font-size: 42px;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+    .photograph-text .photographer-localisation {
+        color: rgba(144, 28, 28, 1);
+        font-size: 16px;
+    }
+
+    .photograph-text p {
+        font-size: 15px;
+    }
+
+}

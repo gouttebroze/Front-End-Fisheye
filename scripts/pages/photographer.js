@@ -44,19 +44,15 @@ function handleSortMedias(medias) {
     console.log($select.value);
     switch ($select.value) {
       case "title":
-        medias.sort((a, b) => {
-          return a.title.localeCompare(b.title)
-        })
+        medias.sort((a, b) => a.title.localeCompare(b.title));
         break;
       case "likes":
-        medias.sort((a, b) =>
-          b.likes - a.likes)
+        medias.sort((a, b) => b.likes - a.likes);
         break;
       case "date":
-        medias.sort((a, b) =>
-          new Date(b.date) - new Date(a.date))
+        medias.sort((a, b) => new Date(b.date) - new Date(a.date));
         break;
-    }
+    };
     displayMediaData(medias);
   })
 }
