@@ -39,19 +39,25 @@ function handleSortMedias(medias) {
   const $select = document.querySelector('#sorting-listbox')
   $select.addEventListener('change', () => {
     const $mediaSection = document.querySelector('.photograph-medias');
-    $mediaSection.innerHTML = ''
-    debugger
+    $mediaSection.innerHTML = '';
+    //let sortedMediasGallery = [];
     console.log($select.value);
     switch ($select.value) {
-      case "likes":
-        medias.sort((a, b) => b.likes - a.likes)
-        debugger
-        displayMediaData(medias)
+      case "title":
+        medias.sort((a, b) => {
+          return a.title.localeCompare(b.title)
+        })
         break;
-
-      default:
+      case "likes":
+        medias.sort((a, b) =>
+          b.likes - a.likes)
+        break;
+      case "date":
+        medias.sort((a, b) =>
+          new Date(b.date) - new Date(a.date))
         break;
     }
+    displayMediaData(medias);
   })
 }
 

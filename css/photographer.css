@@ -19,15 +19,19 @@ body {
 
 .photograph-header {
     background-color: var(--main-color);
-    height: 300px;
-    margin: 0 100px;
+    /* height: 300px; */
+    margin: 40px 100px 0 100px;
     max-width: 1240px;
-
+    /* display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 95px; */
 }
 
 .photograph-wrapper {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .photograph-text {
@@ -39,7 +43,8 @@ body {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    margin: auto;
+    /*     margin: auto;
+ */
     overflow: hidden;
     object-fit: cover;
 }
@@ -261,7 +266,6 @@ input[type="checkbox"]::before {
 .photograph-medias {
     margin: 20vh 8vw 0 8vw;
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px 95px;
     padding: 0;
@@ -386,7 +390,7 @@ footer {
     align-items: center;
     background-color: var(--btn-scd-color);
     font-size: 24px;
-    font-weight: 500;
+    /*     font-weight: 500; */
     position: sticky;
     right: 0;
     top: 20px;
@@ -458,3 +462,7 @@ footer {
 .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 767.98px) {}

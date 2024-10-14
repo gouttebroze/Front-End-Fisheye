@@ -34,7 +34,8 @@ class MediaTemplate {
             ${this._media.image ? imageElement : videoElement}
             <div class="media-text">
                 <h3>${this._media.title}</h3>
-                
+                <br />
+                <h2>${this._media.date}</h2>
                 <div class="likes-count">
                   <label class="like-label">
                     ${this._media.likes}
