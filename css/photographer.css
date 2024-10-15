@@ -35,23 +35,51 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    /*     justify-content: space-around; */
+    justify-content: space-between;
+    gap: 20px;
+
 }
 
 .photograph-text {
     display: flex;
     flex-direction: column;
+    /*     flex-grow: 1;
+    flex-basis: 150px; */
+    flex-shrink: 3;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+
+.contact_button {
+    /*     flex-grow: 1;
+    flex-basis: 80px; */
+    flex-shrink: 2;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 
 .photograph-header .portrait {
+    /*     flex-grow: 1;
+    flex-basis: 60px; 
+    flex-shrink: 5;*/
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    /*     margin: auto;
- */
-    overflow: hidden;
     object-fit: cover;
+    /*  overflow: hidden; */
     transform: scale(1.1);
+    margin-right: 50px;
 }
 
 .photograph-text h1 {
@@ -98,18 +126,7 @@ body {
 /****************************************
 ************    MODAL style *************
 *****************************************/
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .modal {
     border-radius: 5px;
@@ -268,6 +285,7 @@ input[type="checkbox"]::before {
     margin: 20vh 8vw 0 8vw;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
     gap: 20px 95px;
     padding: 0;
     overflow: hidden;
@@ -279,6 +297,8 @@ input[type="checkbox"]::before {
     border-radius: 0.3rem;
     position: relative;
     z-index: 1;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .cards-media-wrapper:hover {
@@ -286,12 +306,13 @@ input[type="checkbox"]::before {
 }
 
 .media-card {
-    max-width: 100%;
+    /* max-width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: cover; */
     overflow: hidden;
     position: relative;
     z-index: 1;
+
 }
 
 .go-to-lightbox {
@@ -429,15 +450,18 @@ footer {
         padding: 0;
     }
 
-    .photograph-wrapper {
+    /* .photograph-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+        gap: 20px
     }
 
     .photograph-text {
         align-items: center;
+        flex-grow: 0;
+        flex-basis: 50px;
     }
 
     .photograph-text h1 {
@@ -455,5 +479,15 @@ footer {
     .photograph-text p {
         font-size: 15px;
     }
+
+    .photograph-header .portrait {
+        flex-grow: 0;
+        width: 100px;
+    }
+
+    .contact_button {
+        flex-grow: 0;
+        flex-basis: 50px;
+    } */
 
 }

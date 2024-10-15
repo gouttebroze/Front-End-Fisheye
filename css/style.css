@@ -92,3 +92,39 @@ ul li {
     margin-top: 3px;
     margin-bottom: 0;
 }
+
+@media (max-width: 767.98px) {
+
+    header {
+        flex-direction: column;
+    }
+
+    header .logo {
+        margin-left: 0;
+    }
+
+    header h1 {
+        margin-right: 0;
+        margin-top: 0;
+        /*         margin-bottom: 50px; */
+    }
+
+    .photographer_section {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+@media (max-width: 567.98px) {
+
+
+
+    .photographer_section {
+
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    }
+
+}
