@@ -13,9 +13,9 @@ const $closeModal = document.querySelector('.close_button');
 
 function displayModal() {
     const $modal = document.getElementById("contact_modal");
-    
-	$modal.style.display = "block";
-    $main.style.display = "none"; 
+
+    $modal.style.display = "block";
+    $main.style.display = "none";
     $body.setAttribute('aria-hidden', 'true');
     $modal.setAttribute('aria-hidden', 'false');
     $modal.setAttribute('aria-describedby', 'Contact me');
@@ -29,31 +29,38 @@ function displayModal() {
     $closeModal.setAttribute('aria-describedby', 'Close Contact form');
 
     console.log('La boîte de dialogue destinée aux contacts est ouverte');
+
 }
 
 function closeModal() {
     const $modal = document.getElementById("contact_modal");
 
     $modal.style.display = "none";
-    $main.style.display= "block";
+    $main.style.display = "block";
     $body.setAttribute('aria-hidden', 'false');
     $modal.setAttribute('aria-hidden', 'true');
     $openModal.focus();
     console.log('La boîte de dialogue destinée aux contacts est désormais fermée.');
+
 }
 
 function modalSubmit() {
     $form.addEventListener('submit', (e) => {
-       e.preventDefault();
-       const firstNameValue = $firstname.value;
-       const lastNameValue = $lastname.value;
-       const emailValue = $email.value;
-       const textareaValue = $textarea.value;
-       console.log(firstNameValue);
-       console.log(lastNameValue);
-       console.log(emailValue);
-       console.log(textareaValue);
+        e.preventDefault();
+        const firstNameValue = $firstname.value;
+        const lastNameValue = $lastname.value;
+        const emailValue = $email.value;
+        const textareaValue = $textarea.value;
+        console.log(firstNameValue);
+        console.log(lastNameValue);
+        console.log(emailValue);
+        console.log(textareaValue);
+        resetModal()
     })
+}
+
+function resetModal() {
+    $form.reset()
 }
 
 modalSubmit();

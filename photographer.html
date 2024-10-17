@@ -3,26 +3,42 @@
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="./css/all.css" />
+  <link rel="stylesheet" href="./css/normalize.css /">
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - photographe </title>
+  <title>Fisheye - photographe</title>
 </head>
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a href="./index.html">
+      <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
+    </a>
   </header>
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
-    <ul class="photograph-medias hide">
-    </ul>
+    <nav>
+      <div class="dropdown custom-select" style="width:200px;">
+        <label for="sorting-listbox">Trier par</label>
+        <select class="select-items" id="sorting-listbox">
+          <option value="likes">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </div>
+    </nav>
+
+    <ul class="photograph-medias"></ul>
+    <footer>
+      <div class="photographer-footer"></div>
+    </footer>
   </main>
-  <div id="open_lightbox">
-    <img class="close_button" src="assets/icons/close.svg" onclick="closeLightBox()" />
-  </div>
+
+  <div id="open_lightbox"></div>
   <div id="contact_modal">
     <div class="modal">
       <header>
@@ -47,11 +63,12 @@
     </div>
   </div>
   <script src="./scripts/utils/fetch.js"></script>
+  <script src="./scripts/utils/slider.js"></script>
   <script src="./scripts/pages/photographer.js"></script>
-  <script src="./scripts/templates/photographer.js"></script>
-  <script src="./scripts/utils/carousel.js"></script>
-  <!-- <script src="./scripts/utils/lightbox.js"></script> -->
+  <script src="./scripts/templates/mediaCard.js"></script>
+  <script src="./scripts/templates/photographerTemplate.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
+
 </body>
 
 </html>
