@@ -40,7 +40,6 @@ function handleSortMedias(medias) {
   $select.addEventListener('change', () => {
     const $mediaSection = document.querySelector('.photograph-medias');
     $mediaSection.innerHTML = '';
-    //let sortedMediasGallery = [];
     console.log($select.value);
     switch ($select.value) {
       case "title":

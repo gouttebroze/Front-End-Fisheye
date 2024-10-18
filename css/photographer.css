@@ -316,10 +316,11 @@ input[type="checkbox"]::before {
 }
 
 .go-to-lightbox {
-    max-width: 100%;
-    height: auto;
+    /* max-width: 100%;
+    height: auto; */
+    width: 350px;
+    height: 300px;
     object-fit: cover;
-    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.3));
     overflow: hidden;
     position: relative;
     z-index: 1;

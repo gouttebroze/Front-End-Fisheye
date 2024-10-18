@@ -2,14 +2,26 @@ class Lightbox {
 
   static init() {
     const gallerySection = document.querySelector(".photograph-medias");
-    const links = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"], video[src$=".mp4"]'));
-    const gallery = links.map((link) => link.getAttribute("src"));
+    const links = document.querySelectorAll('.media-card');
+
+    //const links = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"], video[src$=".mp4"]'));
+    //const gallery = Array.from(links.map((link) => link.getAttribute("src")));
+    const gallery = Array.from(links).map((link) => link.querySelector('.go-to-lightbox').getAttribute('src'));
+    console.log(links);
+
     links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const mediaSrc = e.currentTarget.querySelector('.go-to-lightbox').getAttribute('src');
+        new Lightbox(mediaSrc, gallery);
+      });
+    });
+    /* links.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         new Lightbox(e.currentTarget.getAttribute("src"), gallery);
       });
-    });
+    }); */
   }
   /**
    * @param {string} url URL de l'img
@@ -35,6 +47,8 @@ class Lightbox {
       this.url = null;
       this.alt = alt;
       const image = new Image();
+
+      // image.setAttribut("alt", "Lilac breasted roller");
       const container = this.element.querySelector('.lightbox-container')
       const title = document.createElement('h3');
       title.innerHTML += this.addTitle(url);
@@ -75,8 +89,6 @@ class Lightbox {
       container.appendChild(title);
     }
   }
-
-
 
   addTitle(url) {
     const splitedUrl = url.split("/");
@@ -145,17 +157,31 @@ class Lightbox {
     const $dom = document.createElement('div');
     $dom.classList.add('lightbox-wrapper');
     $dom.innerHTML = `
-      <div class="lightbox">          
-        <img class="arrow prev-lightbox" id="previous-slide" src="assets/icons/ArrowLeft.svg" alt="Previous" />
-          <div class="lightbox-media">           
-              <div>
-                  <h3 class="lightbox-title"></h3>
-              </div>
-              <div class="lightbox-container">
-              </div>                            
+      <div class="lightbox">
+        <img 
+          class="close-lightbox" 
+          src="assets/icons/CloseColor.svg" 
+          alt="Close dialog"
+        />          
+        <img 
+          class="arrow prev-lightbox" 
+          id="previous-slide" 
+          src="assets/icons/ArrowLeft.svg" 
+          alt="Previous image" 
+        />
+        <div class="lightbox-media">           
+          <div>
+            <h3 class="lightbox-title"></h3>
           </div>
-          <img class="arrow next-lightbox" id="next-slide" src="assets/icons/ArrowRight.svg" alt="Next" />
-          <img class="close-lightbox" src="assets/icons/CloseColor.svg" alt="" />
+          <div class="lightbox-container">
+          </div>                            
+        </div>
+        <img 
+          class="arrow next-lightbox" 
+          id="next-slide" 
+          src="assets/icons/ArrowRight.svg" 
+          alt="Next image" 
+        />      
       </div>
     `;
     $dom
