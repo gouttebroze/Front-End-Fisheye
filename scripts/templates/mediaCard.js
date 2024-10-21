@@ -15,39 +15,28 @@ class MediaTemplate {
   }
 
   createMediaCard() {
-
-    /* template to test sort feature by date: */
-    /*  
-    */
-
     const imageElement = `<img class="go-to-lightbox" src="${this.multimedia}" alt="${this._media.title}" width="350px" height="300px" />`;
-    /* const videoElement = `<video class="go-to-lightbox" controls width="250">
-                            <source src="${this.multimedia}" type="video/mp4" />
-                            <p>
-                              Votre navigateur ne prend pas en charge les vidéos HTML5. Voici
-                              <a href="myVideo.mp4">un lien pour télécharger la vidéo</a>.
-                            </p>
-                          </video>`; */
     const videoElement = `<video src="${this.multimedia}" class="go-to-lightbox" controls width="350" height="300"></video>`;
     const mediaCard = `
-        <div class="media-card">
-            ${this._media.image ? imageElement : videoElement}
-            <div class="media-text">
-                <h3>${this._media.title}</h3>
-                
-            </div>
-        </div>
+      <div class="media-card">
+          ${this._media.image ? imageElement : videoElement}
+          <div class="media-card__details">
+            <h3>${this._media.title}</h3>
+          </div>
+      </div>
+      <div class="media-card__details">
         <div class="likes-count">
-                  <label for="" class="like-label">
-                    ${this._media.likes}
-                  </label>
-                  <input 
-                    id=""
-                    name="likes"
-                    class="like-input" 
-                    type="checkbox" 
-                  />
-                </div>
+          <label for="" class="like-label">
+            ${this._media.likes}
+          </label>
+          <input 
+            id=""
+            name="likes"
+            class="like-input" 
+            type="checkbox" 
+          />
+        </div>
+      </div>
     `;
 
     this.$mediaWrapper.innerHTML = mediaCard;
@@ -58,7 +47,6 @@ class MediaTemplate {
     this.userLiked();
 
     console.log(this._media.likes);
-    // console.log(this._photographer.price);
     return this.$mediaWrapper;
   }
 

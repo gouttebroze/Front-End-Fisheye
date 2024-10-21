@@ -306,18 +306,12 @@ input[type="checkbox"]::before {
 }
 
 .media-card {
-    /* max-width: 100%;
-    height: auto;
-    object-fit: cover; */
     overflow: hidden;
     position: relative;
     z-index: 1;
-
 }
 
 .go-to-lightbox {
-    /* max-width: 100%;
-    height: auto; */
     width: 350px;
     height: 300px;
     object-fit: cover;
@@ -326,13 +320,13 @@ input[type="checkbox"]::before {
     z-index: 1;
 }
 
-.media-text {
+.media-card__details {
     color: rgba(144, 28, 28, 1);
     display: flex;
     justify-content: space-between;
 }
 
-.media-text h3 {
+.media-card__details h3 {
     font-size: 24px;
     font-weight: 400;
     margin: 0;
