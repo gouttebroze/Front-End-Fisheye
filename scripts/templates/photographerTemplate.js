@@ -59,7 +59,7 @@ function photographerTemplate(data) {
    * @returns 
    */
   function getUserHeaderDOM() {
-    const article = document.createElement('article');
+    /* const article = document.createElement('article');
     const headerTitle = document.createElement('h1');
     const headerCity = document.createElement('h3')
     const headerCountry = document.createElement('h3');
@@ -78,23 +78,24 @@ function photographerTemplate(data) {
     article.appendChild(headerText);
     article.appendChild(headerCity);
     article.appendChild(headerCountry);
-    article.appendChild(img);
+    article.appendChild(img); */
 
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('photograph-wrapper');
     const photographerHeader = `
-            <div class="photograph-text">
-                <h1>${name}</h1>
+            <div class="photograph-text" tabindex="0">
+                <h1 tabindex="0">${name}</h1>
                 <div class="photographer-localisation">
-                    <h3>${city}, ${country}</h3>
+                    <h3 tabindex="0">${city}, ${country}</h3>
                 </div>
-                <p>${tagline}</p>
+                <p tabindex="0">${tagline}</p>
             </div>
             <button 
+              tabindex="0"
               aria-label="Contact Me" 
               class="contact_button" 
               onclick="displayModal()">Contactez-moi</button>
-            <img class="portrait" src="${picture}" alt="${name}" />
+            <img class="portrait" src="${picture}" alt="${name}" tabindex="0" />
         `;
     $wrapper.innerHTML = photographerHeader;
 

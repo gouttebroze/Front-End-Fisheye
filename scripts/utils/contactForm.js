@@ -44,6 +44,16 @@ function closeModal() {
 
 }
 
+function closeOnKeybord() {
+
+    document.addEventListener('keydown', function (e) {
+        const key = e.key; // const {key} = event; in ES6+
+        if (key === "Escape") {
+            closeModal(e);
+        }
+    });
+}
+
 function modalSubmit() {
     $form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -64,3 +74,4 @@ function resetModal() {
 }
 
 modalSubmit();
+closeOnKeybord();

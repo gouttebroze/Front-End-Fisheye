@@ -17,7 +17,7 @@
       <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
     </a>
   </header>
-  <main id="main" role="main">
+  <main id="main" role="main" tabindex="0">
     <div class="photograph-header">
       <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
@@ -49,15 +49,15 @@
       <form>
         <div>
           <label for="firstname">Prénom</label>
-          <input type="text" id="firstname" name="firstname" />
+          <input tabindex="0" type="text" id="firstname" name="firstname" />
           <label for="lastname">Nom</label>
-          <input type="text" id="lastname" name="lastname" />
+          <input tabindex="0" type="text" id="lastname" name="lastname" />
           <label for="mail">Email</label>
-          <input type="mail" id="mail" name="mail" />
+          <input tabindex="0" type="mail" id="mail" name="mail" />
           <label for="message">Votre message</label>
-          <textarea name="message" id="message"></textarea>
+          <textarea tabindex="0" name="message" id="message"></textarea>
         </div>
-        <button type="submit" class="contact_button" id="send_button" onclick="closeModal()">
+        <button tabindex="0" type="submit" class="contact_button" id="send_button" onclick="closeModal()">
           Envoyer
         </button>
       </form>

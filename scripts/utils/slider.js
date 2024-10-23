@@ -153,17 +153,19 @@ class Lightbox {
    * @param {string} url URL de l'img
    * @returns {HTMLElement}
    */
-  buildDOM(url) { // permet de travailler sur 1 el. HTML
+  buildDOM() { // permet de travailler sur 1 el. HTML
     const $dom = document.createElement('div');
     $dom.classList.add('lightbox-wrapper');
     $dom.innerHTML = `
-      <div class="lightbox">
+      <div class="lightbox" tabindex="0">
         <img 
+          tabindex="0"
           class="close-lightbox" 
           src="assets/icons/CloseColor.svg" 
           alt="Close dialog"
         />          
         <img 
+          tabindex="0"
           class="arrow prev-lightbox" 
           id="previous-slide" 
           src="assets/icons/ArrowLeft.svg" 
@@ -171,12 +173,13 @@ class Lightbox {
         />
         <div class="lightbox-media">           
           <div>
-            <h3 class="lightbox-title"></h3>
+            <h3 class="lightbox-title" tabindex="0"></h3>
           </div>
-          <div class="lightbox-container">
+          <div class="lightbox-container" tabindex="0">
           </div>                            
         </div>
         <img 
+          tabindex="0"
           class="arrow next-lightbox" 
           id="next-slide" 
           src="assets/icons/ArrowRight.svg" 

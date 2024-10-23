@@ -44,9 +44,3 @@ class PhotographerMedia {
     return this._price;
   }
 }
-
-class PhotographerGallery {
-  constructor(media) {
-    this.media = media;
-  }
-}

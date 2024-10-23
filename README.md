@@ -9,3 +9,11 @@
 * Lien vers le repo. du code source du [projet Fisheye](https://github.com/gouttebroze/Front-End-Fisheye).
 
 * [Fisheye on Github Pages](https://gouttebroze.github.io/Front-End-Fisheye/) (Lien vers le projet en déploiement continu).
+
+## Dependences
+
+* Script pour lancer **ESLint** (avec *npm*):
+
+```shell
+  npm run lint
+```
