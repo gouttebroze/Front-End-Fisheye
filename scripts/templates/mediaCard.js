@@ -51,12 +51,12 @@ class MediaTemplate {
       </div>
       <div class="media-card__details">
         <div class="likes-count">
-          <label for="" class="like-label">
+          <label for="like-checkbox__${this._media.id}" class="like-label">
             ${this._media.likes}
           </label>
           <input 
             tabindex="0"
-            id=""
+            id="like-checkbox__${this._media.id}"
             name="likes"
             class="like-input" 
             type="checkbox" 
@@ -71,8 +71,8 @@ class MediaTemplate {
       .checked = this._media.userLike;
 
     this.userLiked();
+    // this.userLikedOnKeyboard();
 
-    console.log(this._media.likes);
     return this.$mediaWrapper;
   }
 
@@ -84,13 +84,34 @@ class MediaTemplate {
         let totalLikes = Number($totalLikes.innerHTML)
         if (e.target.checked) {
           this._media.likes += 1;
-          totalLikes += 1
+          totalLikes += 1;
         } else {
           this._media.likes -= 1;
-          totalLikes -= 1
+          totalLikes -= 1;
         }
-        $totalLikes.innerHTML = totalLikes
+        $totalLikes.innerHTML = totalLikes;
         this.$mediaWrapper.querySelector('label.like-label').innerHTML = this._media.likes;
-      })
+      });
+
   }
+
+  /* userLikedOnKeyboard() {
+    this.$mediaWrapper
+      .querySelector('input[type="checkbox"]')
+      .addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+          const $totalLikes = document.querySelector('#totalLikes')
+          let totalLikes = Number($totalLikes.innerHTML)
+          if (e.target.checked) {
+            this._media.likes += 1;
+            totalLikes += 1;
+          } else {
+            this._media.likes -= 1;
+            totalLikes -= 1;
+          }
+          $totalLikes.innerHTML = totalLikes;
+          this.$mediaWrapper.querySelector('label.like-label').innerHTML = this._media.likes;
+        }
+      }) 
+  }*/
 }

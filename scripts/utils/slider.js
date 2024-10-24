@@ -15,6 +15,15 @@ class Lightbox {
         const mediaSrc = e.currentTarget.querySelector('.go-to-lightbox').getAttribute('src');
         new Lightbox(mediaSrc, gallery);
       });
+      link.addEventListener("keyup", (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const mediaSrc = e.currentTarget.querySelector('.go-to-lightbox').getAttribute('src');
+          new Lightbox(mediaSrc, gallery);
+        } else {
+          return;
+        }
+      });
     });
     /* links.forEach((link) => {
       link.addEventListener("click", (e) => {

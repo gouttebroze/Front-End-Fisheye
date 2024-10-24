@@ -33,15 +33,17 @@
     </nav> -->
 
     <div class="gallery-filter-container">
-      <p tabindex="0">Trier par</p>
+      <p id="sort-by" tabindex="0">Trier par</p>
       <div class="dropdown-container">
         <div class="dropdown">
-          <button class="btn_drop" aria-hidden="true">
+          <button role="button" class="btn_drop" aria-hidden="true" aria-haspopup="listbox" aria-expanded="false"
+            aria-selected="true">
             <span id="current_filter">Titre</span>
             <span class="fa-solid fa-chevron-down" aria-hidden="true"></span>
           </button>
 
-          <ul id="sorting-listbox" class="dropdown_content">
+          <ul id="sorting-listbox" role="listbox" aria-labelledby="sort-by" aria-activedescendant=""
+            class="dropdown_content">
             <li value="title" role="option">
               <button value="title" type="button" tabindex="0" aria-label="Trier par titre" class="sort-by-title">
                 Titre

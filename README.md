@@ -17,3 +17,13 @@
 ```shell
   npm run lint
 ```
+## Todo
+
+* focus
+* screen reader
+* firefox bug
+* checked on keybord on likes btn
+
+* Si <select>: *Pas d’attribut ARIA supplémentaire nécessaire*
+* Si listbox ARIA: *le trigger du menu a comme attributs role=”button”, aria-haspopup=”listbox”, aria-expanded.* 
+* Liste d’options : *role=”listbox”, aria-activedescendant, aria-selected, aria-labelledby qui pointe vers l’input label*
