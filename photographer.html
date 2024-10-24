@@ -21,7 +21,7 @@
     <div class="photograph-header">
       <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
     </div>
-    <nav>
+    <!-- <nav>
       <div class="dropdown custom-select" style="width:200px;">
         <label for="sorting-listbox">Trier par</label>
         <select class="select-items" id="sorting-listbox">
@@ -30,12 +30,44 @@
           <option value="title">Titre</option>
         </select>
       </div>
-    </nav>
+    </nav> -->
+
+    <div class="gallery-filter-container">
+      <p tabindex="0">Trier par</p>
+      <div class="dropdown-container">
+        <div class="dropdown">
+          <button class="btn_drop" aria-hidden="true">
+            <span id="current_filter">Titre</span>
+            <span class="fa-solid fa-chevron-down" aria-hidden="true"></span>
+          </button>
+
+          <ul id="sorting-listbox" class="dropdown_content">
+            <li value="title" role="option">
+              <button value="title" type="button" tabindex="0" aria-label="Trier par titre" class="sort-by-title">
+                Titre
+              </button>
+            </li>
+            <li value="likes" role="option">
+              <button value="likes" type="button" tabindex="0" aria-label="Trier par popularité" class="sort-by-pop">
+                Popularité
+              </button>
+            </li>
+            <li value="date" role="option">
+              <button value="date" type="button" tabindex="0" aria-label="Trier par date" class="sort-by-date">
+                Date
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <ul class="photograph-medias"></ul>
+
     <footer role="contentinfo">
       <div class="photographer-footer"></div>
     </footer>
+
   </main>
 
   <div id="open_lightbox" role="dialog" aria-label="image closeup view"></div>
@@ -69,6 +101,7 @@
   <script src="./scripts/templates/mediaCard.js"></script>
   <script src="./scripts/templates/photographerTemplate.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
+  <script src="./scripts/utils/dropdown.js"></script>
 
 </body>
 

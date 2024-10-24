@@ -114,11 +114,11 @@ class Lightbox {
    * @param {KeyboardEvent} e 
    */
   onKeyUp(e) {
-    if (e.key == 'Escape') {
+    if (e.key === 'Escape') {
       this.close(e)
-    } else if (e.key == 'ArrowRight') {
+    } else if (e.key === 'ArrowRight') {
       this.next(e)
-    } else if (e.key == 'ArrowLeft') {
+    } else if (e.key === 'ArrowLeft') {
       this.prev(e)
     }
   }
