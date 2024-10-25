@@ -49,7 +49,7 @@ class MediaTemplate {
             <h3 tabindex="0">${this._media.title}</h3>
           </div>
       </div>
-      <div class="media-card__details">
+      <div class="media-card__details likes__media">
         <div class="likes-count">
           <label for="like-checkbox__${this._media.id}" class="like-label">
             ${this._media.likes}
@@ -71,7 +71,7 @@ class MediaTemplate {
       .checked = this._media.userLike;
 
     this.userLiked();
-    // this.userLikedOnKeyboard();
+    this.userLikedOnKeyboard();
 
     return this.$mediaWrapper;
   }
@@ -95,13 +95,15 @@ class MediaTemplate {
 
   }
 
-  /* userLikedOnKeyboard() {
+  userLikedOnKeyboard() {
     this.$mediaWrapper
       .querySelector('input[type="checkbox"]')
       .addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
           const $totalLikes = document.querySelector('#totalLikes')
           let totalLikes = Number($totalLikes.innerHTML)
+          console.log(e.target.checked);
+          e.target.checked = !e.target.checked
           if (e.target.checked) {
             this._media.likes += 1;
             totalLikes += 1;
@@ -112,6 +114,6 @@ class MediaTemplate {
           $totalLikes.innerHTML = totalLikes;
           this.$mediaWrapper.querySelector('label.like-label').innerHTML = this._media.likes;
         }
-      }) 
-  }*/
+      })
+  }
 }
