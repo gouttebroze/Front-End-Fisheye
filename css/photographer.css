@@ -343,6 +343,7 @@ input[type="checkbox"]::before {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    width: 80%;
 }
 
 
