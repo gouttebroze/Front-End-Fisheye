@@ -334,12 +334,15 @@ input[type="checkbox"]::before {
     justify-content: space-between;
 }
 
-.media-card__details h3 {
+.media-card__details>h3 {
     font-size: 24px;
     font-weight: 400;
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
