@@ -173,27 +173,29 @@ class Lightbox {
           src="assets/icons/CloseColor.svg" 
           alt="Close dialog"
         />          
-        <img 
-          tabindex="0"
-          class="arrow prev-lightbox" 
-          id="previous-slide" 
-          src="assets/icons/ArrowLeft.svg" 
-          alt="Previous image" 
-        />
-        <div class="lightbox-media">           
+        
+        <div class="lightbox-media">  
+          <img 
+            tabindex="0"
+            class="arrow prev-lightbox" 
+            id="previous-slide" 
+            src="assets/icons/ArrowLeft.svg" 
+            alt="Previous image" 
+          />       
           <div>
             <h3 class="lightbox-title" tabindex="0"></h3>
           </div>
           <div class="lightbox-container" tabindex="0">
-          </div>                            
+          </div>  
+          <img 
+            tabindex="0"
+            class="arrow next-lightbox" 
+            id="next-slide" 
+            src="assets/icons/ArrowRight.svg" 
+            alt="Next image" 
+          />                             
         </div>
-        <img 
-          tabindex="0"
-          class="arrow next-lightbox" 
-          id="next-slide" 
-          src="assets/icons/ArrowRight.svg" 
-          alt="Next image" 
-        />      
+  
       </div>
     `;
     $dom

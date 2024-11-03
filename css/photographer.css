@@ -204,7 +204,12 @@ form textarea {
 /************ LIGHTBOX style ***********************/
 .lightbox {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.lightbox>img {
+    width: 40px;
 }
 
 .lightbox-media {
