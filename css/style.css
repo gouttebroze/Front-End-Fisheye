@@ -58,6 +58,12 @@ ul li {
 
 }
 
+.photographer-card>a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .photographer-card .photographer-card__name {
     color: #D3573C;
     font-size: 36px;
@@ -93,7 +99,7 @@ ul li {
     margin-bottom: 0;
 }
 
-@media (max-width: 767.98px) {
+/* @media (max-width: 767.98px) {
 
     header {
         flex-direction: column;
@@ -106,7 +112,6 @@ ul li {
     header h1 {
         margin-right: 0;
         margin-top: 0;
-        /*         margin-bottom: 50px; */
     }
 
     .photographer_section {
@@ -115,16 +120,17 @@ ul li {
 
     }
 
-}
+} */
 
 @media (max-width: 567.98px) {
 
-
-
     .photographer_section {
-
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-
+        grid-template-columns: 1fr;
+        gap: 80px;
+        margin-top: 100px;
+        margin-right: 91px;
+        margin-left: 91px;
+        margin-bottom: 119px;
     }
 
 }

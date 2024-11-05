@@ -1,4 +1,6 @@
 class PhotographerMedia {
+
+  // propriétés d'instance des attributs
   constructor(data) {
     this._id = data.id;
     this._photographerId = data.photographerId;
@@ -9,9 +11,9 @@ class PhotographerMedia {
     this._userLike = false;
     this._dates = data.dates;
     this._price = data.price;
-    // this._mediaType = data.image || data.video;
   }
 
+  // getters (permet d'accéder à la lecture de la propriété)
   get id() {
     return this._id;
   }

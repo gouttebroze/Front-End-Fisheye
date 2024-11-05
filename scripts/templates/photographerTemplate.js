@@ -7,7 +7,6 @@ function photographerTemplate(data) {
 
   const picture = `assets/photographers/${portrait}`;
   const media = `assets/FishEye_Photos/medias/${photographerId}/${image || video}`;
-  const $mediaCardContainer = document.querySelector('.photograph-medias');
 
   /**
    * template permettant de générer le HTML d'une carte 
@@ -37,6 +36,8 @@ function photographerTemplate(data) {
     $img.setAttribute('src', picture);
     $img.setAttribute('alt', ' ');
 
+    $link.focus();
+
     $name.textContent = name;
     $from.textContent = `${city}, ${country}`;
     $tagline.textContent = tagline;
@@ -59,26 +60,6 @@ function photographerTemplate(data) {
    * @returns 
    */
   function getUserHeaderDOM() {
-    /* const article = document.createElement('article');
-    const headerTitle = document.createElement('h1');
-    const headerCity = document.createElement('h3')
-    const headerCountry = document.createElement('h3');
-    const headerText = document.createElement('p');
-    const img = document.createElement('img');
-    const price = document.createElement('p');
-
-    headerTitle.textContent = name;
-    headerText.textContent = tagline;
-    headerCity.textContent = city;
-    headerCountry.textContent = country;
-    price.textContent = price;
-    img.setAttribute("src", picture);
-
-    article.appendChild(headerTitle);
-    article.appendChild(headerText);
-    article.appendChild(headerCity);
-    article.appendChild(headerCountry);
-    article.appendChild(img); */
 
     const $wrapper = document.createElement('div');
     $wrapper.classList.add('photograph-wrapper');

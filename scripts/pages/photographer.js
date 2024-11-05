@@ -34,7 +34,7 @@ function handleSortMedias(medias) {
 
   // création d'un MutationObserver (permet d'intercepter les changements du DOM)
   const filterObserver = new MutationObserver((mutationsList) => {
-    for (let mutation of mutationsList) {
+    for (const mutation of mutationsList) {
       if (mutation.type === "childList") {
         // déclanchement du filtre selon l'id "current_filter"
         let newGalleryData;
@@ -83,7 +83,13 @@ function dropGallery() {
   $mediaSection.innerHTML = '';
 }
 
+/**
+ * affichage du total des "likes" & du tarif journalier
+ * @param {*} medias 
+ * @param {*} photographers 
+ */
 function displayPhotographerInfos(medias, photographers) {
+
   const $photographerFooter = document.querySelector('.photographer-footer');
   let totalLikes = 0;
   medias.filter(media => media.photographerId === Id).forEach(media => {

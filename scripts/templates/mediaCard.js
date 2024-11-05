@@ -1,5 +1,7 @@
 /* eslint eqeqeq: "error", curly: "error" */
 class MediaTemplate {
+
+  // constructeur : methode contenant les propriétés d'instances
   constructor(media) {
     this._media = media;
     this.$mediaWrapper = document.createElement('li');
@@ -8,6 +10,7 @@ class MediaTemplate {
     this.multimedia = `assets/FishEye_Photos/medias/${this._media.photographerId}/${this._media.image || this._media.video}`;
   }
 
+  // "getters" (lecture) permettent l'accès aux proprietes de l'objet (voir principe d'encaptulation)
   get media() {
     return this._media;
   }
@@ -16,29 +19,27 @@ class MediaTemplate {
     return this._media.likes;
   }
 
+  // méthode pr générer le template
   createMediaCard() {
-    const imageElement = `<img class="go-to-lightbox" src="${this.multimedia}" alt="${this._media.title}" width="350px" height="300px" />`;
-    const videoElement = `<video src="${this.multimedia}" class="go-to-lightbox" controls width="350" height="300"></video>`;
-    /* const mediaCard = `
-      <div class="media-card">
-          ${this._media.image ? imageElement : videoElement}
-          <div class="media-card__details">
-            <h3>${this._media.title}</h3>
-          
-        <div class="likes-count">
-          <label for="" class="like-label">
-            ${this._media.likes}
-          </label>
-          <input 
-            id=""
-            name="likes"
-            class="like-input" 
-            type="checkbox" 
-          />
-        </div>
-      </div>
-      </div>
-    `; */
+    const imageElement = `
+      <img 
+        class="go-to-lightbox" 
+        src="${this.multimedia}" 
+        alt="${this._media.title}" 
+        width="350px" 
+        height="300px" 
+      />
+      `;
+
+    const videoElement = `
+      <video 
+        src="${this.multimedia}" 
+        class="go-to-lightbox" 
+        controls 
+        width="350" 
+        height="300">
+      </video>
+      `;
 
     const mediaCard = `
       <div class="media-card">
@@ -50,7 +51,7 @@ class MediaTemplate {
           </div>
       </div>
       <div class="media-card__details likes__media">
-        <div class="likes-count">
+        <div class="likes-count"">
           <label for="likes ${this._media.id}" class="like-label">
             ${this._media.likes}
           </label>
