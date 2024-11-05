@@ -60,6 +60,7 @@ class Lightbox {
       // image.setAttribut("alt", "Lilac breasted roller");
       const container = this.element.querySelector('.lightbox-container')
       const title = document.createElement('h3');
+      title.setAttribute("tabindex", "O");
       title.innerHTML += this.addTitle(url);
       // on vide le container de l'img actuel avant de charger la nouvelle image
       container.innerHTML = '';
@@ -167,35 +168,33 @@ class Lightbox {
     $dom.classList.add('lightbox-wrapper');
     $dom.innerHTML = `
       <div class="lightbox" tabindex="0">
-        <img 
-          tabindex="0"
-          class="close-lightbox" 
-          src="assets/icons/CloseColor.svg" 
-          alt="Close dialog"
-        />          
-        
         <div class="lightbox-media">  
-          <img 
-            tabindex="0"
-            class="arrow prev-lightbox" 
-            id="previous-slide" 
-            src="assets/icons/ArrowLeft.svg" 
-            alt="Previous image" 
-          />       
-          <div>
-            <h3 class="lightbox-title" tabindex="0"></h3>
-          </div>
-          <div class="lightbox-container" tabindex="0">
-          </div>  
-          <img 
-            tabindex="0"
-            class="arrow next-lightbox" 
-            id="next-slide" 
-            src="assets/icons/ArrowRight.svg" 
-            alt="Next image" 
-          />                             
-        </div>
-  
+          
+            <img 
+              tabindex="0"
+              class="arrow prev-lightbox media2" 
+              id="previous-slide" 
+              src="assets/icons/ArrowLeft.svg" 
+              alt="Previous image" 
+            />       
+            <div class="lightbox-container media3" tabindex="0">
+            </div>
+            <div class="grid-last-col">
+              <img 
+                tabindex="0"
+                class="close-lightbox media1" 
+                src="assets/icons/CloseColor.svg" 
+                alt="Close dialog"
+              />
+              <img 
+                tabindex="0"
+                class="arrow next-lightbox media4" 
+                id="next-slide" 
+                src="assets/icons/ArrowRight.svg" 
+                alt="Next image" 
+              />
+            </div>  
+          </div>      
       </div>
     `;
     $dom

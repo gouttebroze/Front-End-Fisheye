@@ -51,12 +51,12 @@ class MediaTemplate {
       </div>
       <div class="media-card__details likes__media">
         <div class="likes-count">
-          <label for="like-checkbox__${this._media.id}" class="like-label">
+          <label for="likes ${this._media.id}" class="like-label">
             ${this._media.likes}
           </label>
           <input 
             tabindex="0"
-            id="like-checkbox__${this._media.id}"
+            id="likes ${this._media.id}"
             name="likes"
             class="like-input" 
             type="checkbox" 

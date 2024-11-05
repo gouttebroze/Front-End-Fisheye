@@ -35,21 +35,21 @@ function photographerTemplate(data) {
 
     $link.setAttribute('aria-label', name);
     $img.setAttribute('src', picture);
-    // $img.setAttribute('alt', '');
+    $img.setAttribute('alt', ' ');
 
     $name.textContent = name;
     $from.textContent = `${city}, ${country}`;
     $tagline.textContent = tagline;
     $price.textContent = `${price}€/jour`;
+    $article.appendChild($link);
+    $link.appendChild($img);
+    $link.appendChild($name);
 
-    $article.appendChild($img);
-    $article.appendChild($name);
     $article.appendChild($from);
     $article.appendChild($tagline);
     $article.appendChild($price);
-    $link.appendChild($article);
 
-    return ($link);
+    return ($article);
   }
 
   /**

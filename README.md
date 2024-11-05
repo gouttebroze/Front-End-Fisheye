@@ -12,8 +12,22 @@
 
 ## Dependences
 
-* Script pour lancer **ESLint** (avec *npm*):
+* Script pour lancer une analyse des fichiers avec le linter **ESLint** (ici avec *npm*):
 
 ```shell
   npm run lint
 ```
+
+* Lien vers la [documentation](https://eslint.org/docs/latest/) d'**ESLint** (version 9.14.0).
+
+## Notes
+
+* Les fichiers, qui contiennent les médias (images ou vidéos) de chaques photographes, sont identifiés par l'id du photographe (soit le photographerId), au lieu du nom, ce qui garantie un identifiant unique et sans doublon, ainsi qu'un chemin d'appel des médias sans erreurs (ou problèmes liés aux chaînes de charactères). Et voici la constante qui représente le chemin vers les médias de chaques photographes:
+
+```js
+const media = `assets/FishEye_Photos/medias/${photographerId}/${image || video}`;
+```
+
+## Propositions - Idées
+
+* Concernant l'utilisation d'un linter, tel **ESLint**, il serait intéressant de partager des règles communes à suivre pour chacunes des contributions au code source du projet (configuration du linter sur les règles de syntaxes, l'utilisation de plugins...).
