@@ -42,13 +42,14 @@ function handleSortMedias(medias) {
           newGalleryData = sortByPop(medias);
         } else if (currentFilter.innerText === "Date") {
           newGalleryData = sortByDate(medias);
-        }
+        };
 
         // fn permettant de vider le contenu des médias de la gallery
         dropGallery();
 
         // génération de la gallery avec en paramètre les médias triés 
         displayMediaData(newGalleryData);
+        Lightbox.init();
       }
     }
   });

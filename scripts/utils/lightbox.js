@@ -3,9 +3,6 @@ class Lightbox {
   static init() {
     const gallerySection = document.querySelector(".photograph-medias");
     const links = document.querySelectorAll('.media-card');
-
-    //const links = Array.from(gallerySection.querySelectorAll('img[src$=".jpg"], video[src$=".mp4"]'));
-    //const gallery = Array.from(links.map((link) => link.getAttribute("src")));
     const gallery = Array.from(links).map((link) => link.querySelector('.go-to-lightbox').getAttribute('src'));
     console.log(links);
 
@@ -25,12 +22,6 @@ class Lightbox {
         }
       });
     });
-    /* links.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        new Lightbox(e.currentTarget.getAttribute("src"), gallery);
-      });
-    }); */
   }
   /**
    * @param {string} url URL de l'img
