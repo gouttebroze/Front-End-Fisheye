@@ -1,16 +1,17 @@
 /* eslint eqeqeq: "error", curly: "error" */
 class MediaTemplate {
-
-  // constructeur : methode contenant les propriétés d'instances
+  // methode contenant les propriétés d'instances
   constructor(media) {
     this._media = media;
     this.$mediaWrapper = document.createElement('li');
     this.$mediaWrapper.classList.add('cards-media-wrapper');
     this.$mediaWrapper.setAttribute('tabindex', '0');
+
+    // tel une factory, on gére différentes sources de données (images et vidéo), ayant des caractéristiques similaires 
     this.multimedia = `assets/FishEye_Photos/medias/${this._media.photographerId}/${this._media.image || this._media.video}`;
   }
 
-  // "getters" (lecture) permettent l'accès aux proprietes de l'objet (voir principe d'encaptulation)
+  // "getters" (lecture) permettent l'accès aux proprietes de l'objet
   get media() {
     return this._media;
   }
@@ -19,8 +20,9 @@ class MediaTemplate {
     return this._media.likes;
   }
 
-  // méthode pr générer le template
+  // méthode pr générer le template d'une carte d'un média de la gallerie
   createMediaCard() {
+
     const imageElement = `
       <img 
         class="go-to-lightbox" 
@@ -96,6 +98,9 @@ class MediaTemplate {
 
   }
 
+  /**
+   * navigation clavier
+   */
   userLikedOnKeyboard() {
     this.$mediaWrapper
       .querySelector('input[type="checkbox"]')

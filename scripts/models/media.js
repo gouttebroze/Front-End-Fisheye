@@ -1,4 +1,4 @@
-class PhotographerMedia {
+/* class PhotographerMedia {
 
   // propriétés d'instance des attributs
   constructor(data) {
@@ -46,3 +46,4 @@ class PhotographerMedia {
     return this._price;
   }
 }
+ */

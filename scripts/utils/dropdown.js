@@ -6,21 +6,24 @@ const btnSortPop = document.querySelector(".sort-by-pop");
 const btnSortDate = document.querySelector(".sort-by-date");
 const btnSortTitle = document.querySelector(".sort-by-title");
 
-// Function to rearrange the list items
+/**
+ * fn permettant de réordonner la listes des items
+ * liste transformée en tableau & ordonnée par ces index
+ */
 function reorderList(selectedItem) {
   const items = Array.from(dropdownContent.children);
   const selectedItemIndex = items.findIndex((item) =>
     item.contains(selectedItem)
   );
 
-  // Remove the selected item from its current position
+  // Suppression des items sélectionnés depuis leurs positions courantes
   const [selectedLi] = items.splice(selectedItemIndex, 1);
 
-  // Add the selected item to the beginning of the list
+  // ajout des items sélectionnés au début de la liste
   dropdownContent.insertBefore(selectedLi, dropdownContent.firstChild);
 }
 
-// Event listeners for each button
+// écouteurs d'évenements sur chaques btn
 btnSortPop.addEventListener("click", function () {
   currentFilter.innerHTML = "Popularité";
   reorderList(btnSortPop);
@@ -45,11 +48,16 @@ btnSortTitle.addEventListener("click", function () {
   }
 });
 
-// Keyboard navigation
 
-// Make .btn_drop unfocusable
+/**
+ * navigation au clavier
+ */
+
+/**
+ * ajout attribut "tabindex" à -1 empeche le btn d'être atteint avec la navigation clavier 
+ * (ms l'élément pt toujours capturer le focus)
+ */
 btnDrop.setAttribute("tabindex", "-1");
-// TODO : display .dropdown_content on top of .btn_drop & make .dropdown height 150px when a sort-by button is focused
 
 btnSortPop.addEventListener("focus", function () {
   btnDrop.style.zIndex = "-10";

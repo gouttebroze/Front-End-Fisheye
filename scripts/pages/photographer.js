@@ -2,7 +2,7 @@ const lightboxSection = document.querySelector('.lightbox');
 const $lightbox = document.querySelector('#open_lightbox');
 const $closeLightbox = document.querySelector('.close_button');
 
-// fetch photographer id from current URL
+// récupère les "id" des photographes depuis l'URL courant (fetch photographer id from current URL)
 const urlParams = new URLSearchParams(window.location.search);
 const Id = parseInt(urlParams.get('id'));
 
@@ -29,9 +29,7 @@ async function displayMediaData(medias) {
 }
 
 function handleSortMedias(medias) {
-
   const currentFilter = document.querySelector("#current_filter");
-
   // création d'un MutationObserver (permet d'intercepter les changements du DOM)
   const filterObserver = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
@@ -59,11 +57,17 @@ function handleSortMedias(medias) {
   filterObserver.observe(currentFilter, config);
 }
 
+/**
+ * @returns medias triés par popularité
+ */
 function sortByPop(medias) {
   const mediaOrdered = medias.slice().sort((a, b) => b.likes - a.likes);
   return mediaOrdered;
 }
 
+/**
+ * @returns medias triés par date
+ */
 function sortByDate(medias) {
   const mediaOrdered = medias
     .slice()
@@ -71,6 +75,9 @@ function sortByDate(medias) {
   return mediaOrdered;
 }
 
+/**
+ * @returns medias triés par titre
+ */
 function sortByTitle(medias) {
   const mediaOrdered = medias
     .slice()
@@ -78,6 +85,10 @@ function sortByTitle(medias) {
   return mediaOrdered;
 }
 
+/**
+ * suppression du contenu de la gallery de médias 
+ * (avant d'être regénéré avec un nouveau contenu trié)
+ */
 function dropGallery() {
   const $mediaSection = document.querySelector('.photograph-medias');
   $mediaSection.innerHTML = '';
@@ -85,11 +96,8 @@ function dropGallery() {
 
 /**
  * affichage du total des "likes" & du tarif journalier
- * @param {*} medias 
- * @param {*} photographers 
  */
 function displayPhotographerInfos(medias, photographers) {
-
   const $photographerFooter = document.querySelector('.photographer-footer');
   let totalLikes = 0;
   medias.filter(media => media.photographerId === Id).forEach(media => {
@@ -98,10 +106,8 @@ function displayPhotographerInfos(medias, photographers) {
   const $likes = document.createElement('span');
   $likes.setAttribute('id', 'totalLikes');
   $likes.innerHTML = totalLikes;
-  // $photographerFooter.appendChild($likes);
   const $heartIcon = document.createElement('span');
   $heartIcon.innerHTML = '<i class="fa-solid fa-heart footer-icon" style="color: #000000;"></i>';
-  // $photographerFooter.appendChild($heartIcon);
   const $likesContainer = document.createElement('span');
   $likesContainer.classList.add('likes-footer-container');
   $likesContainer.appendChild($likes);
@@ -112,11 +118,6 @@ function displayPhotographerInfos(medias, photographers) {
   $price.classList.add('photographer-footer__price');
   $price.innerHTML = `${photographer.price}€ / jour`;
   $photographerFooter.appendChild($price);
-}
-
-function getDropdown() {
-  const dropdown = document.querySelector('#dropdown-selector')
-  new DropdownFactory(dropdown, 0)
 }
 
 async function init() {
