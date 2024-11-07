@@ -33,24 +33,30 @@ function handleSortMedias(medias) {
   // création d'un MutationObserver (permet d'intercepter les changements du DOM)
   const filterObserver = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
-      if (mutation.type === "childList") {
-        // déclanchement du filtre selon l'id "current_filter"
-        let newGalleryData;
-        if (currentFilter.innerText === "Titre") {
+      let newGalleryData;
+      switch (mutation.type === "childList") {
+        case currentFilter.innerText === "Titre":
           newGalleryData = sortByTitle(medias);
-        } else if (currentFilter.innerText === "Popularité") {
+          break;
+        case currentFilter.innerText === "Popularité":
           newGalleryData = sortByPop(medias);
-        } else if (currentFilter.innerText === "Date") {
+          break;
+        case currentFilter.innerText === "Date":
           newGalleryData = sortByDate(medias);
-        };
-
-        // fn permettant de vider le contenu des médias de la gallery
-        dropGallery();
-
-        // génération de la gallery avec en paramètre les médias triés 
-        displayMediaData(newGalleryData);
-        Lightbox.init();
+          break;
+        default:
+          newGalleryData = sortByTitle(medias);
+          break;
       }
+
+      // fn permettant de vider le contenu des médias de la gallery
+      dropGallery();
+
+      // génération de la gallery avec en paramètre les médias triés 
+      displayMediaData(newGalleryData);
+
+      // classe Lightbox doit être réinitiallisé après chaque trie des medias pr fonctionner
+      Lightbox.init();
     }
   });
   // configuration du MutationObserver
@@ -127,7 +133,7 @@ async function init() {
   const medias = await getMedias();
 
   displayPhotographerData(photographers);
-  displayMediaData(medias);
+  displayMediaData(sortByTitle(medias)); // affichage des medias, triés par titre par défaut
   handleSortMedias(medias);
   displayPhotographerInfos(medias, photographers);
   Lightbox.init();
