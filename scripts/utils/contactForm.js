@@ -1,5 +1,6 @@
 const $main = document.querySelector('#main');
 const $body = document.querySelector('body');
+const $header = document.querySelector('header');
 
 const $firstname = document.querySelector('#firstname');
 const $lastname = document.querySelector('#lastname');
@@ -16,6 +17,8 @@ function displayModal() {
 
     $modal.style.display = "block";
     $main.style.display = "none";
+    $header.style.display = "none";
+
     $body.setAttribute('aria-hidden', 'true');
     $modal.setAttribute('aria-hidden', 'false');
     $modal.setAttribute('aria-describedby', 'Contact me');
@@ -27,9 +30,6 @@ function displayModal() {
     $textarea.setAttribute('aria-describedby', 'Your message');
     $send.setAttribute('aria-describedby', 'Send');
     $closeModal.setAttribute('aria-describedby', 'Close Contact form');
-
-    console.log('La boîte de dialogue destinée aux contacts est ouverte');
-
 }
 
 function closeModal() {
@@ -37,11 +37,11 @@ function closeModal() {
 
     $modal.style.display = "none";
     $main.style.display = "block";
+    $header.style.display = "block";
+
     $body.setAttribute('aria-hidden', 'false');
     $modal.setAttribute('aria-hidden', 'true');
     $openModal.focus();
-    console.log('La boîte de dialogue destinée aux contacts est désormais fermée.');
-
 }
 
 function closeOnKeybord() {

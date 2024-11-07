@@ -1,7 +1,6 @@
 class Lightbox {
 
   static init() {
-    const gallerySection = document.querySelector(".photograph-medias");
     const links = document.querySelectorAll('.media-card');
     const gallery = Array.from(links).map((link) => link.querySelector('.go-to-lightbox').getAttribute('src'));
     console.log(links);
@@ -31,6 +30,7 @@ class Lightbox {
   constructor(url, gallery, alt) {
     const $sliderWrapper = document.querySelector('#open_lightbox');
     $main.style.display = "none";
+    $header.style.display = "none";
     $sliderWrapper.style.display = "block";
     this.element = this.buildDOM(url, alt); // construction du DOM à partir de l'URL
     this.gallery = gallery;
@@ -108,6 +108,7 @@ class Lightbox {
       this.element.parentElement.removeChild(this.element)
     }, 500);
     $main.style.display = "block";
+    $header.style.display = "block";
     document.removeEventListener('keyup', this.onKeyUp);
   }
 
